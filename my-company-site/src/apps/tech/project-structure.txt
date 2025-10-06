@@ -1,0 +1,29 @@
+/src
+ ├── components/
+ │    ├── Layouts/
+ │    │    └── EcommerceLayout.tsx
+ │    ├── Filters/
+ │    │    ├── SidebarFilters.tsx
+ │    │    ├── CategoryFilter.tsx
+ │    │    ├── PriceRangeSlider.tsx
+ │    │    └── RatingFilter.tsx
+ │    ├── Cart/
+ │    │    ├── CartContext.tsx
+ │    │    ├── MiniCart.tsx
+ │    │    ├── CartPage.tsx
+ │    │    └── CartItem.tsx
+ │    ├── ProductCard.tsx
+ │    ├── SolutionRequestModal.tsx
+ │    └── VendorCard.tsx
+ ├── pages/
+ │    ├── products/index.tsx
+ │    ├── solutions/index.tsx
+ │    ├── partners/index.tsx
+ │    ├── about/[submenu].tsx
+ │    └── support/[submenu].tsx
+ ├── data/
+ │    ├── products.json
+ │    ├── solutions.json
+ │    └── partners.json
+ └── utils/
+      └── filterUtils.ts

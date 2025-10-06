@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "category": "AI Tools",
+    "vendor": "OpenAI",
+    "name": "GPT Plugin",
+    "img": "/images/plugin.jpg",
+    "desc": "Description here",
+    "spec": "Specifications here",
+    "pricing": "$19.99"
+  }
+]

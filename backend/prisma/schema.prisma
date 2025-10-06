@@ -1,0 +1,13 @@
+// datasource + generator only
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// NOTE: Prisma doesn’t support `import` natively
+// → We’ll stitch all modules together before migration/generation
+// For example, with a simple Node script or prisma-schema-split

@@ -1,0 +1,179 @@
+{
+  "logo": "/logo.png",
+  "links": [
+    {
+      "name": "Product",
+      "columns": [
+        {
+          "title": "Renewable Energy",
+          "links": [
+            { "label": "Solar Panels", "path": "/solar-panels" },
+            { "label": "Wind Turbine Systems", "path": "/wind-turbine" },
+            { "label": "Inverters & Hybrid Systems", "path": "/inverters-hybrid" },
+            { "label": "Tubular Batteries", "path": "/tubular-batteries" },
+            { "label": "PV Cables & Accessories", "path": "/pv-cables" }
+          ]
+        },
+        {
+          "title": "Security",
+          "links": [
+            { "label": "CCTV Cameras", "path": "/cctv-cameras" },
+            { "label": "DVRs & NVRs", "path": "/dvrs-nvrs" },
+            { "label": "PoE Devices", "path": "/poe-devices" },
+            { "label": "Motion Sensors", "path": "/motion-sensors" },
+            { "label": "Biometric Devices", "path": "/biometric-devices" },
+            { "label": "Cables & Accessories", "path": "/security-cables" }
+          ]
+        },
+        {
+          "title": "IT & Robotics",
+          "links": [
+            { "label": "Computers & Laptops", "path": "/computers-laptops" },
+            { "label": "Switches & Routers", "path": "/switches-routers" },
+            { "label": "Smart Devices", "path": "/smart-devices" },
+            { "label": "Voltage Regulators", "path": "/voltage-regulators" },
+            { "label": "Smart Locks", "path": "/smart-locks" },
+            { "label": "Robotics Kits", "path": "/robotics-kits" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "columns": [
+        {
+          "title": "Smart School Solutions",
+          "links": [
+            { "label": "Digital Classrooms", "path": "/digital-classrooms" },
+            { "label": "CBT Lab Setup", "path": "/cbt-labs" },
+            { "label": "Robotics & Coding Labs", "path": "/robotics-labs" },
+            { "label": "Soft Skills Training", "path": "/soft-skills" },
+            { "label": "Educational Wears & Stationery", "path": "/edu-wears" }
+          ]
+        },
+        {
+          "title": "Security Solutions",
+          "links": [
+            { "label": "CCTV Installation", "path": "/cctv-installation" },
+            { "label": "IP Surveillance", "path": "/ip-surveillance" },
+            { "label": "Access Control Systems", "path": "/access-control" },
+            { "label": "Alarm Systems", "path": "/alarm-systems" },
+            { "label": "Intrusion Detection", "path": "/intrusion-detection" }
+          ]
+        },
+        {
+          "title": "Energy Solutions",
+          "links": [
+            { "label": "Solar Power Systems", "path": "/solar-power" },
+            { "label": "Hybrid Inverter Solutions", "path": "/hybrid-inverter" },
+            { "label": "Wind Power Systems", "path": "/wind-power" },
+            { "label": "Custom Off-Grid Design", "path": "/offgrid-design" }
+          ]
+        },
+        {
+          "title": "IT & Training",
+          "links": [
+            { "label": "IT Support", "path": "/it-support" },
+            { "label": "CBT Labs", "path": "/cbt-training" },
+            { "label": "Digital Tools", "path": "/digital-tools" },
+            { "label": "Remote School Systems", "path": "/remote-school" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support",
+      "columns": [
+        {
+          "title": "Technical Support",
+          "links": [
+            { "label": "IT Troubleshooting", "path": "/it-troubleshooting" },
+            { "label": "Network Maintenance", "path": "/network-maintenance" },
+            { "label": "Firmware Updates", "path": "/firmware-updates" },
+            { "label": "Remote Support", "path": "/remote-support" }
+          ]
+        },
+        {
+          "title": "Installation Services",
+          "links": [
+            { "label": "Solar & Inverter Installation", "path": "/solar-installation" },
+            { "label": "Security Device Installation", "path": "/security-installation" },
+            { "label": "Network Infrastructure Setup", "path": "/network-setup" }
+          ]
+        },
+        {
+          "title": "Training & Capacity Building",
+          "links": [
+            { "label": "Web Solutions Training", "path": "/web-training" },
+            { "label": "Robotics Training", "path": "/robotics-training" },
+            { "label": "Security Installation Training", "path": "/security-training" },
+            { "label": "Renewable Energy Installation Training", "path": "/renewable-training" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "columns": [
+        {
+          "title": "Company",
+          "links": [
+            { "label": "Who We Are", "path": "/who-we-are" },
+            { "label": "Mission & Vision", "path": "/mission-vision" },
+            { "label": "Leadership Team", "path": "/leadership-team" },
+            { "label": "Careers", "path": "/careers" }
+          ]
+        },
+        {
+          "title": "Impact Areas",
+          "links": [
+            { "label": "Education", "path": "/impact-education" },
+            { "label": "Energy Access", "path": "/impact-energy" },
+            { "label": "Security & Safety", "path": "/impact-security" },
+            { "label": "Digital Transformation", "path": "/impact-digital" }
+          ]
+        },
+        {
+          "title": "Contact",
+          "links": [
+            { "label": "Contact Form", "path": "/contact-form" },
+            { "label": "Request a Quote", "path": "/request-quote" },
+            { "label": "Support Channels", "path": "/support-channels" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partners & Developers",
+      "columns": [
+        {
+          "title": "Partnerships",
+          "links": [
+            { "label": "Become a Partner", "path": "/partners/become" },
+            { "label": "Channel Partners", "path": "/partners/channel" },
+            { "label": "Corporate Alliances", "path": "/partners/corporate" },
+            { "label": "Franchise Opportunities", "path": "/partners/franchise" }
+          ]
+        },
+        {
+          "title": "Developer Resources",
+          "links": [
+            { "label": "API Documentation", "path": "/developers/api-docs" },
+            { "label": "SDKs & Tools", "path": "/developers/sdks" },
+            { "label": "Integration Guides", "path": "/developers/integration" },
+            { "label": "Sandbox Access", "path": "/developers/sandbox" }
+          ]
+        },
+        {
+          "title": "Community & Support",
+          "links": [
+            { "label": "Developer Forum", "path": "/community/forum" },
+            { "label": "Events & Hackathons", "path": "/community/events" },
+            { "label": "Case Studies", "path": "/community/case-studies" },
+            { "label": "Partner Support", "path": "/community/support" }
+          ]
+        }
+      ]
+    }
+  ]
+}

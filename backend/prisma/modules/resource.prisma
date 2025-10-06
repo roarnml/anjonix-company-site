@@ -1,0 +1,17 @@
+model Resource {
+  id          Int      @id @default(autoincrement())
+  course      Course   @relation(fields: [courseId], references: [id])
+  courseId    Int
+  uploader    User     @relation(fields: [uploaderId], references: [id])
+  uploaderId  Int
+  title       String
+  description String?
+  type        ResourceType
+  storageKey  String
+  mimeType    String
+  size        Int?
+  duration    Int?
+  previewUrl  String?
+  visibility  Visibility
+  createdAt   DateTime @default(now())
+}

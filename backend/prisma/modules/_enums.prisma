@@ -1,0 +1,47 @@
+enum UserRole {
+  admin
+  instructor
+  student
+  management
+}
+
+enum CourseRoleType {
+  lead
+  ta
+  guest
+}
+
+enum ResourceType {
+  note
+  video
+  image
+  file
+  link
+}
+
+enum Visibility {
+  public
+  private
+  courseOnly
+}
+
+enum BookingStatus {
+  requested
+  accepted
+  declined
+  cancelled
+  completed
+}
+
+enum Category {
+  enterprise
+  institution
+  online
+}
+
+enum Assessment{
+    pending
+    cancelled
+    completed
+    marked
+}

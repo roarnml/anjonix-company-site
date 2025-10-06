@@ -1,0 +1,39 @@
+{
+  "cta": {
+    "text": "Ready to transform agriculture with smart tools?",
+    "buttons": [
+      { "label": "Explore Smart Farming", "href": "/smart-farming", "style": "primary" },
+      { "label": "Contact Us", "href": "/contact", "style": "secondary" }
+    ]
+  },
+  "brand": {
+    "logo": "/logo.png",
+    "mission": "Empowering farmers and agribusinesses with modern agritech solutions."
+  },
+  "quickLinks": {
+    "Solutions": [
+      { "label": "Smart Irrigation", "href": "/irrigation" },
+      { "label": "Drone Mapping", "href": "/solutions/drones" },
+      { "label": "Farm Analytics", "href": "/analytics" }
+    ],
+    "Resources": [
+      { "label": "Case Studies", "href": "/resources/cases" },
+      { "label": "Partners", "href": "/partners" }
+    ]
+  },
+  "contact": {
+    "phone": "+2349075734956",
+    "email": "agtech@anjonixgmobalimited.com",
+    "website": "https://www.anjonix.com",
+    "address": "Lagos, Nigeria"
+  },
+  "social": [
+    { "label": "Facebook", "href": "#" },
+    { "label": "Twitter", "href": "#" },
+    { "label": "LinkedIn", "href": "#" }
+  ],
+  "legal": [
+    { "label": "Privacy Policy", "href": "/privacy-policy" },
+    { "label": "Terms of Service", "href": "/terms" }
+  ]
+}

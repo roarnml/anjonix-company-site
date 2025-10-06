@@ -1,0 +1,38 @@
+backend/
+│── prisma/
+│   └── client.ts              # Prisma client init
+│
+│── src/
+│   │── server.ts              # Entry point (only setup + route mounts)
+│   │
+│   ├── config/
+│   │   ├── constants.ts       # PUBLIC_EMAIL_DOMAINS, PORT, JWT_SECRET, etc.
+│   │   └── rateLimiter.ts     # rate limiter configs
+│   │
+│   ├── middleware/
+│   │   ├── session.ts         # sessionMiddleware
+│   │   ├── auth.ts            # authenticateToken
+│   │   └── errorHandler.ts    # centralized error handling (optional)
+│   │
+│   ├── utils/
+│   │   ├── email.ts           # sendEmail + sendSignupEmail
+│   │   ├── jwt.ts             # generateToken, verifyToken, generateVerificationToken
+│   │   └── helpers.ts         # normalizeRole, isPublicEmail, domainFromEmail
+│   │
+│   ├── routes/
+│   │   ├── auth.routes.ts     # /auth/*
+│   │   ├── organization.routes.ts # /organizations/*
+│   │   ├── resource.routes.ts # /api/resources/*
+│   │   ├── booking.routes.ts  # /api/bookings/*
+│   │   ├── forum.routes.ts    # /api/forum/*
+│   │   └── admin.routes.ts    # /api/organizations (admin only)
+│   │
+│   └── controllers/
+│       ├── auth.controller.ts
+│       ├── organization.controller.ts
+│       ├── resource.controller.ts
+│       ├── booking.controller.ts
+│       ├── forum.controller.ts
+│       └── admin.controller.ts
+│
+└── package.json

@@ -1,0 +1,207 @@
+{
+  "logo": "/logo.png",
+  "links": [
+    {
+      "name": "Product",
+      "columns": [
+        {
+          "title": "Renewable Energy",
+          "links": [
+            { "label": "Solar Panels", "path": "/tech/solar-panels" },
+            { "label": "Wind Turbine Systems", "path": "/tech/wind-turbine" },
+            { "label": "Inverters & Hybrid Systems", "path": "/tech/inverters-hybrid" },
+            { "label": "Tubular Batteries", "path": "/tech/tubular-batteries" },
+            { "label": "PV Cables & Accessories", "path": "/tech/pv-cables" }
+          ]
+        },
+        {
+          "title": "Security",
+          "links": [
+            { "label": "CCTV Cameras", "path": "/tech/cctv-cameras" },
+            { "label": "DVRs & NVRs", "path": "/tech/dvrs-nvrs" },
+            { "label": "PoE Devices", "path": "/tech/poe-devices" },
+            { "label": "Motion Sensors", "path": "/tech/motion-sensors" },
+            { "label": "Biometric Devices", "path": "/tech/biometric-devices" },
+            { "label": "Cables & Accessories", "path": "/tech/security-cables" }
+          ]
+        },
+        {
+          "title": "IT & Robotics",
+          "links": [
+            { "label": "Computers & Laptops", "path": "/tech/computers-laptops" },
+            { "label": "Switches & Routers", "path": "/tech/switches-routers" },
+            { "label": "Smart Devices", "path": "/tech/smart-devices" },
+            { "label": "Voltage Regulators", "path": "/tech/voltage-regulators" },
+            { "label": "Smart Locks", "path": "/tech/smart-locks" },
+            { "label": "Robotics Kits", "path": "/tech/robotics-kits" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "columns": [
+        {
+          "title": "Smart School Solutions",
+          "links": [
+            { "label": "Digital Classrooms", "path": "/tech/digital-classrooms" },
+            { "label": "CBT Lab Setup", "path": "/tech/cbt-labs" },
+            { "label": "Robotics & Coding Labs", "path": "/tech/robotics-labs" },
+            { "label": "Soft Skills Training", "path": "/tech/soft-skills" },
+            { "label": "Educational Wears & Stationery", "path": "/tech/edu-wears" }
+          ]
+        },
+        {
+          "title": "Security Solutions",
+          "links": [
+            { "label": "CCTV Installation", "path": "/cctv-installation" },
+            { "label": "IP Surveillance", "path": "/ip-surveillance" },
+            { "label": "Access Control Systems", "path": "/access-control" },
+            { "label": "Alarm Systems", "path": "/alarm-systems" },
+            { "label": "Intrusion Detection", "path": "/intrusion-detection" }
+          ]
+        },
+        {
+          "title": "Energy Solutions",
+          "links": [
+            { "label": "Solar Power Systems", "path": "/tech/solar-power" },
+            { "label": "Hybrid Inverter Solutions", "path": "/tech/hybrid-inverter" },
+            { "label": "Wind Power Systems", "path": "/tech/wind-power" },
+            { "label": "Custom Off-Grid Design", "path": "/tech/offgrid-design" }
+          ]
+        },
+        {
+          "title": "IT & Training",
+          "links": [
+            { "label": "IT Support", "path": "/tech/it-support" },
+            { "label": "CBT Labs", "path": "/tech/cbt-training" },
+            { "label": "Digital Tools", "path": "/tech/digital-tools" },
+            { "label": "Remote School Systems", "path": "/tech/remote-school" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support",
+      "columns": [
+        {
+          "title": "Technical Support",
+          "links": [
+            { "label": "IT Troubleshooting", "path": "/tech/it-troubleshooting" },
+            { "label": "Network Maintenance", "path": "/tech/network-maintenance" },
+            { "label": "Firmware Updates", "path": "/tech/firmware-updates" },
+            { "label": "Remote Support", "path": "/tech/remote-support" }
+          ]
+        },
+        {
+          "title": "Installation Services",
+          "links": [
+            { "label": "Solar & Inverter Installation", "path": "/tech/solar-installation" },
+            { "label": "Security Device Installation", "path": "/tech/security-installation" },
+            { "label": "Network Infrastructure Setup", "path": "/tech/network-setup" }
+          ]
+        },
+        {
+          "title": "Training & Capacity Building",
+          "links": [
+            { "label": "Web Solutions Training", "path": "/tech/web-training" },
+            { "label": "Robotics Training", "path": "/tech/robotics-training" },
+            { "label": "Security Installation Training", "path": "/tech/security-training" },
+            { "label": "Renewable Energy Installation Training", "path": "/tech/renewable-training" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "columns": [
+        {
+          "title": "Company",
+          "links": [
+            { "label": "Who We Are", "path": "/tech/who-we-are" },
+            { "label": "Mission & Vision", "path": "/tech/mission-vision" },
+            { "label": "Leadership Team", "path": "/tech/leadership-team" },
+            { "label": "Careers", "path": "/tech/careers" }
+          ]
+        },
+        {
+          "title": "Impact Areas",
+          "links": [
+            { "label": "Education", "path": "/tech/impact-education" },
+            { "label": "Energy Access", "path": "/tech/impact-energy" },
+            { "label": "Security & Safety", "path": "/tech/impact-security" },
+            { "label": "Digital Transformation", "path": "/tech/impact-digital" }
+          ]
+        },
+        {
+          "title": "Contact",
+          "links": [
+            { "label": "Contact Form", "path": "/tech/contact-form" },
+            { "label": "Request a Quote", "path": "/tech/request-quote" },
+            { "label": "Support Channels", "path": "/tech/support-channels" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partners & Developers",
+      "columns": [
+        {
+          "title": "Partnerships",
+          "links": [
+            { "label": "Become a Partner", "path": "/tech/partners/become" },
+            { "label": "Channel Partners", "path": "/tech/partners/channel" },
+            { "label": "Corporate Alliances", "path": "/tech/partners/corporate" },
+            { "label": "Franchise Opportunities", "path": "/tech/partners/franchise" }
+          ]
+        },
+        {
+          "title": "Developer Resources",
+          "links": [
+            { "label": "API Documentation", "path": "/tech/developers/api-docs" },
+            { "label": "SDKs & Tools", "path": "/tech/developers/sdks" },
+            { "label": "Integration Guides", "path": "/tech/developers/integration" },
+            { "label": "Sandbox Access", "path": "/tech/developers/sandbox" }
+          ]
+        },
+        {
+          "title": "Community & Support",
+          "links": [
+            { "label": "Developer Forum", "path": "/tech/community/forum" },
+            { "label": "Events & Hackathons", "path": "/tech/community/events" },
+            { "label": "Case Studies", "path": "/tech/community/case-studies" },
+            { "label": "Partner Support", "path": "/tech/community/support" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Portals",
+      "columns": [
+        {
+          "title": "Educational Institution",
+          "links": [
+            { "label": "Students", "path": "/tech/user/institution/student-portal" },
+            { "label": "Management", "path": "/tech/user/institution/management-portal" },
+            { "label": "Instructor", "path": "/tech/user/institution/instructor-portal" }
+          ]
+        },
+        {
+          "title": "Enterprises",
+          "links": [
+            { "label": "Company Instructor", "path": "/tech/user/enterprise/instructor-portal" },
+            { "label": "Staff Login", "path": "/tech/user/enterprise/student-portal" },
+            { "label": "Management Appraisal", "path": "/tech/user/enterprise/management-portal" }
+          ]
+        },
+        {
+          "title": "others",
+          "links": [
+            { "label": "Online Student Login", "path": "/tech/user/online/student-portal" },
+            { "label": "Course Instructor", "path": "/tech/user/online/instructor-portal"}
+          ]
+        }
+      ]
+    }
+  ]
+}

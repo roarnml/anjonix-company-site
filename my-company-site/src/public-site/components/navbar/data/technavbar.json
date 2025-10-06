@@ -1,0 +1,109 @@
+{
+  "logo": "public/logo.png",
+  "links": [
+    {
+      "name": "Product",
+      "columns": [
+        {
+          "title": "Renewable Energy",
+          "links": [
+            {
+              "label" : "Solar Panels",
+              "path" : "/solar-panels"
+            },
+            {
+              "label" : "Wind Turbine Systems",
+              "path" : "/wind-turbine-systems"
+            },
+            {
+              "label" : "Inverters & Hybrid Systems",
+              "path" : "/inverters-hybrid-systems"
+            },
+            {
+              "label" : "Tubular Batteries",
+              "path" : "/tubular-batteries"
+            },
+            {
+              "label" : "PV Cables and Accessories",
+              "path" : "/pv-cables-and-accessories"
+            }
+          ]
+        },
+        {
+          "title": "Security",
+          "links": [
+            {
+              "label": "CCTV Cameras",
+              "path": "cctv-cameras"
+            },
+            {
+              "label": "DVRs & NVRs",
+              "path": "dvrs-nvrs"
+            },
+            {
+              "label": "PoE Devices",
+              "path": "poe-devices"
+            },
+            {
+              "label": "Motion Sensors",
+              "path": "motion-sensors"
+            },
+            {
+              "label": "Biometric Devices",
+              "path": "biometric-devices"
+            },
+            {
+              "label": "Cables & Accessories",
+              "path": "cables-accessories"
+            }
+          ]
+        },
+        {
+          "title": "IT & Robotics",
+          "links": [
+            {
+              "label": "Computers & Laptops",
+              "path": "/computers-laptops"
+            },
+            {
+              "label": "Switches & Routers",
+              "path": "/switches-routers"
+            },
+            {
+              "label": "Smart Devices",
+              "path": "/smart-devices"
+            },
+            {
+              "label": "Voltage Regulators",
+              "path": "/voltage-regulators"
+            },
+            {
+              "label": "Smart Locks",
+              "path": "/smart-locks"
+            },
+            {
+              "label": "Robotics Kits",
+              "path": "/robotics-kits"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Solutions",
+      "columns": "/solutions"
+    },
+    {
+      "name": "Support",
+      "columns": "/support"
+    },
+    {
+      "name": "Partners & Developers",
+      "columns": "/partners"
+    },
+    {
+      "name": "About",
+      "columns": "/about"
+    }
+  ]
+}

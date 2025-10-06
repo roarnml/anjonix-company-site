@@ -1,0 +1,299 @@
+// datasource + generator only
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// NOTE: Prisma doesn’t support `import` natively
+// → We’ll stitch all modules together before migration/generation
+// For example, with a simple Node script or prisma-schema-split
+
+
+enum UserRole {
+  admin
+  instructor
+  student
+  management
+}
+
+enum CourseRoleType {
+  lead
+  ta
+  guest
+}
+
+enum ResourceType {
+  note
+  video
+  image
+  file
+  link
+}
+
+enum Visibility {
+  public
+  private
+  courseOnly
+}
+
+enum BookingStatus {
+  requested
+  accepted
+  declined
+  cancelled
+  completed
+}
+
+enum Category {
+  enterprise
+  institution
+  online
+}
+
+enum Assessment{
+    pending
+    cancelled
+    completed
+    marked
+}
+
+model ActivityLog {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  action     String
+  targetType String
+  targetId   Int
+  metadata   Json?
+  createdAt  DateTime @default(now())
+}
+
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId   Int
+  storageKey String
+  mimeType   String
+  size      Int?
+  createdAt DateTime @default(now())
+}
+
+model Booking {
+  id            Int      @id @default(autoincrement())
+  student       User     @relation("BookingStudent", fields: [studentId], references: [id])
+  studentId     Int
+  instructor    User     @relation("BookingInstructor", fields: [instructorId], references: [id])
+  instructorId  Int
+  course        Course   @relation(fields: [courseId], references: [id])
+  courseId      Int
+  slotStart     DateTime
+  slotEnd       DateTime
+  status        BookingStatus
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  organizationId Int
+  organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+
+model Course {
+  id          Int         @id @default(autoincrement())
+  title       String
+  slug        String      @unique
+  description String?
+  visibility  Visibility
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  owner       User        @relation("CourseOwner", fields: [ownerId], references: [id])
+  ownerId     Int
+  collaborators Json?
+
+  courseRoles CourseRole[]
+  resources   Resource[]
+  forumThreads ForumThread[]
+  bookings    Booking[]
+}
+
+
+model CourseRole {
+  id       Int   @id @default(autoincrement())
+  user     User  @relation(fields: [userId], references: [id])
+  userId   Int
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId Int
+  role     CourseRoleType
+}
+
+model ForumComment {
+  id        String   @id @default(uuid())
+  content   String
+  postId    Int
+  userId    Int
+  createdAt DateTime @default(now())
+
+  post ForumPost @relation(fields: [postId], references: [id])
+  user   User @relation("UserComments", fields: [userId], references: [id])
+
+}
+
+
+model ForumThread {
+  id              Int         @id @default(autoincrement())
+  course          Course      @relation(fields: [courseId], references: [id])
+  courseId        Int
+  author          User       @relation("ForumThreadAuthor", fields: [authorId], references: [id])
+  authorId        Int
+  title           String
+  content         String
+  acceptedAnswerId Int?
+  tags            String[]
+  viewsCount      Int         @default(0)
+  upvotes         Int         @default(0)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  posts           ForumPost[]
+  organizationId  Int
+  organization    Organization @relation(fields: [organizationId], references: [id])
+
+  userId Int
+  user   User @relation("UserThreads", fields: [userId], references: [id])
+
+}
+
+model ForumPost {
+  id          Int       @id @default(autoincrement())
+  title       String
+  thread      ForumThread @relation(fields: [threadId], references: [id])
+  threadId    Int
+
+  // Relation #1 → Author of the post
+  author      User      @relation("ForumPostAuthor", fields: [authorId], references: [id])
+  authorId    Int
+
+  content     String
+  upvotes     Int        @default(0)
+  createdAt   DateTime   @default(now())
+
+  // Replies (self-relation)
+  parentPost    ForumPost? @relation("CommentReplies", fields: [parentPostId], references: [id])
+  parentPostId  Int?
+  replies       ForumPost[] @relation("CommentReplies")
+
+  // Relation #2 → General user (e.g., participant)
+  user          User @relation("ForumPostUser", fields: [userId], references: [id])
+  userId        Int
+
+  // Org scoping
+  organizationId Int?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+
+  comments       ForumComment[]   // 👈 opposite of ForumComment.post
+}
+
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  type      String
+  payload   Json
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+model Organization {
+  id            Int      @id @default(autoincrement())
+  name          String
+  allowedDomain String   @unique
+  address       String?
+  contactEmail  String?
+  contactPhone  String?
+  website       String?
+  description   String?
+  createdAt     DateTime @default(now())
+
+  users         User[]
+  bookings      Booking[]     // 👈 back relation
+  forumPosts    ForumPost[]   // 👈 also needed below
+  forumThreads ForumThread[]
+}
+
+
+model Resource {
+  id          Int      @id @default(autoincrement())
+  course      Course   @relation(fields: [courseId], references: [id])
+  courseId    Int
+  uploader    User     @relation(fields: [uploaderId], references: [id])
+  uploaderId  Int
+  title       String
+  description String?
+  type        ResourceType
+  storageKey  String
+  mimeType    String
+  size        Int?
+  duration    Int?
+  previewUrl  String?
+  visibility  Visibility
+  createdAt   DateTime @default(now())
+}
+
+
+model Session {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  lastActive DateTime
+  userId     Int
+  isActive  Boolean  @default(true)
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            Int          @id @default(autoincrement())
+  uuid          String?       @unique @default(uuid())
+  email         String       @unique
+  name          String?
+  avatarUrl     String?
+  passwordHash  String
+  role          UserRole?
+  category      Category
+  verified      Boolean      @default(false)
+  orgName       String?
+  metadata      Json?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime?    @updatedAt
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId Int?
+  sessions       Session[]
+  courses        Course[]     @relation("CourseOwner")
+  courseRoles    CourseRole[]
+  resources      Resource[]
+
+  
+  bookingsAsStudent     Booking[] @relation("BookingStudent")
+  bookingsAsInstructor  Booking[] @relation("BookingInstructor")
+
+
+  notifications  Notification[]
+  activityLogs   ActivityLog[]
+  attachments    Attachment[]
+
+  forumPostsAsAuthor ForumPost[]    @relation("ForumPostAuthor")
+  forumPostsAsUser   ForumPost[]    @relation("ForumPostUser")
+  forumComments      ForumComment[] @relation("UserComments")
+
+
+  forumThreadsAsAuthor ForumThread[] @relation("ForumThreadAuthor")
+  forumThreadsAsUser  ForumThread[] @relation("UserThreads")
+
+
+  refreshToken   String?
+}

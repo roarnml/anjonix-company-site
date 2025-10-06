@@ -1,0 +1,8 @@
+→ merges + migrates.
+npm run prisma:dev
+
+→ merges + regenerates client.
+npm run prisma:generate
+
+→ merges + opens Prisma Studio.
+npm run prisma:studio

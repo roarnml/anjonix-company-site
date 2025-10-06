@@ -1,0 +1,23 @@
+{
+  "logo": "/logo.png",
+  "links": [
+    { "name": "Home", "path": "/" },
+    { "name": "Partners", "path": "/partners" },
+    { "name": "Careers", "path": "/careers" },
+    {
+      "name": "Offering",
+      "columns": [
+        {
+          "title": "Solutions",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    },
+    { "name": "About", "path": "/about" },
+    { "name": "Blog", "path": "/blog" }
+  ]
+}

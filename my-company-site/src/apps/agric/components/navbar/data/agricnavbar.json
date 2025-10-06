@@ -1,0 +1,164 @@
+{
+  "logo": "/logo.png",
+  "links": [
+    {
+      "name": "Services",
+      "columns": [
+        {
+          "title": "Farm Projects",
+          "links": [
+            { "label": "Farm Setup & Management", "path": "/agric/farm-setup" },
+            { "label": "Cash Crop Cultivation", "path": "/agric/cash-crop" },
+            { "label": "Irrigation Planning", "path": "/agric/irrigation" },
+            { "label": "Farm Staffing & Training", "path": "/agric/farm-recruit" }
+          ]
+        },
+        {
+          "title": "Advanced Agriculture",
+          "links": [
+            { "label": "Precision Farming Implements", "path": "/agric/precision-farming" },
+            { "label": "Automation Systems", "path": "/agric/automations" },
+            { "label": "Agri-Data Monitoring", "path": "/agric/agro-monitor" },
+            { "label": "Sensor Integration", "path": "/agric/sensor-integrate" }
+          ]
+        },
+        {
+          "title": "Processing & Value Addition",
+          "links": [
+            { "label": "Cash Crop Processing (Industrial)", "path": "/agric/cash-crop-processing" },
+            { "label": "Sorting & Packaging", "path": "/agric/sorting-packaging" },
+            { "label": "Drying Units", "path": "/agric/dry-units" },
+            { "label": "Agro Waste Management", "path": "/agric/agro-waste" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "columns": [
+        {
+          "title": "Land & Inputs",
+          "links": [
+            { "label": "Agricultural Land", "path": "/agric/land" },
+            { "label": "Seedlings", "path": "/agric/seeds" },
+            { "label": "Fertilizers", "path": "/agric/fertilizers" },
+            { "label": "Pesticides", "path": "/agric/pesticides" }
+          ]
+        },
+        {
+          "title": "Machinery",
+          "links": [
+            { "label": "Farm Tractors", "path": "/agric/farm-tractors" },
+            { "label": "Tillage Equipment", "path": "/agric/equipment" },
+            { "label": "Harvesters", "path": "/agric/harvester" },
+            { "label": "Farm Machinery Rentals", "path": "/agric/farm-tools" }
+          ]
+        },
+        {
+          "title": "Smart Equipment",
+          "links": [
+            { "label": "Agricultural Production Equipment", "path": "/agric/production-equipment" },
+            { "label": "Automation Farming Equipment", "path": "/agric/farming-equipment" },
+            { "label": "Greenhouse Kits", "path": "/agric/greenhouse" },
+            { "label": "Irrigation Controllers", "path": "/agric/irrigation" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support",
+      "columns": [
+        {
+          "title": "Technical Support",
+          "links": [
+            { "label": "Installation", "path": "/agric/installation" },
+            { "label": "Maintainance", "path": "/agric/maintainance" },
+            { "label": "On-field Help", "path": "/agric/field-help" },
+            { "label": "Troubleshooting", "path": "/agric/troubleshooting" }
+          ]
+        },
+        {
+          "title": "Farming Training",
+          "links": [
+            { "label": "Workshops", "path": "/agric/workshops" },
+            { "label": "Demo Farms", "path": "/agric/demo-farms" },
+            { "label": "Remote Advisory", "path": "/agric/remote-advisory" },
+            { "label": "Best Practices", "path": "/agric/best-practices" }
+          ]
+        },
+        {
+          "title": "Seasonal Assistance",
+          "links": [
+            { "label": "Planting Guides", "path": "/agric/planting-guides" },
+            { "label": "Weather Planning", "path": "/agric/weather-planning" },
+            { "label": "Crop Calendar", "path": "/agric/crop-calendar" },
+            { "label": "Market Advisory", "path": "/agric/market-advisory" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partners",
+      "columns": [
+        {
+          "title": "Our Network",
+          "links": [
+            { "label": "Agro Dealers", "path": "/agric/dealers" },
+            { "label": "Farmers Co-ops", "path": "/agric/farm-coop" },
+            { "label": "Local Agents", "path": "/agric/agents" },
+            { "label": "Research Institutes", "path": "/agric/research" }
+          ]
+        },
+                {
+          "title": "Join Us",
+          "links": [
+            { "label": "Become a Partner", "path": "/agric/become-partners" },
+            { "label": "Franchise", "path": "/agric/franchise" },
+            { "label": "Field Collaborators", "path": "/agric/collaborators" },
+            { "label": "NGO Alliances", "path": "/agric/allies" }
+          ]
+        },
+                {
+          "title": "Investment & Funding",
+          "links": [
+            { "label": "Agric Financing", "path": "/agric/agric-finance" },
+            { "label": "Pilot Programs", "path": "/agric/pilot-programs" },
+            { "label": "CSR Partnerships", "path": "/agric/csr-patnerships" },
+            { "label": "Grants", "path": "/agric/grants" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "columns": [
+        {
+          "title": "About Anjonix Agric",
+          "links": [
+            { "label": "Our Mission", "path": "/agric/mission" },
+            { "label": "Vison & Goals", "path": "/agric/vision" },
+            { "label": "Leadership Team", "path": "/agric/team" },
+            { "label": "Impact Stories", "path": "/agric/impact-stories" }
+          ]
+        },
+        {
+          "title": "Resources & Insights",
+          "links": [
+            { "label": "Blog", "path": "/blog/agric" },
+            { "label": "Reports", "path": "/agric/reports" },
+            { "label": "Case Studies", "path": "/agric/case-studies" },
+            { "label": "FAQs", "path": "/agric/faqs" }
+          ]
+        },
+        {
+          "title": "Contact",
+          "links": [
+            { "label": "Contact Us", "path": "/agric/contact" },
+            { "label": "Work With Us", "path": "/agric/careers" },
+            { "label": "Support", "path": "/agric/invest-affiliates" }
+          ]
+        }
+      ]
+    }
+  ]
+}

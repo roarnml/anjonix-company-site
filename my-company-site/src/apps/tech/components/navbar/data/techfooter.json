@@ -1,0 +1,42 @@
+{
+  "cta": {
+    "text": "Ready to power your business with cutting-edge technology?",
+    "buttons": [
+      { "label": "Explore Tech Solutions", "href": "/solutions", "style": "primary" },
+      { "label": "Get in Touch", "href": "/contact", "style": "secondary" }
+    ]
+  },
+  "brand": {
+    "logo": "/logo.png",
+    "mission": "Delivering innovative technology solutions to drive digital transformation and growth."
+  },
+  "quickLinks": {
+    "Solutions": [
+      { "label": "Cloud Services", "href": "/solutions/cloud" },
+      { "label": "Cybersecurity", "href": "/solutions/cybersecurity" },
+      { "label": "AI & Automation", "href": "/solutions/ai" }
+    ],
+    "Resources": [
+      { "label": "Case Studies", "href": "/resources/cases" },
+      { "label": "Developer Hub", "href": "/developers" },
+      { "label": "Partners", "href": "/partners" }
+    ]
+  },
+  "contact": {
+    "phone": "+2349075734956",
+    "email": "tech@anjonixgloballimited.com",
+    "website": "https://www.anjonix.com/tech",
+    "address": "Lagos, Nigeria"
+  },
+  "social": [
+    { "label": "Facebook", "href": "#" },
+    { "label": "Twitter", "href": "#" },
+    { "label": "LinkedIn", "href": "#" },
+    { "label": "GitHub", "href": "#" }
+  ],
+  "legal": [
+    { "label": "Privacy Policy", "href": "/privacy-policy" },
+    { "label": "Terms of Service", "href": "/terms" },
+    { "label": "Service Level Agreement", "href": "/sla" }
+  ]
+}

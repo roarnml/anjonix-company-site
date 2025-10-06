@@ -1,0 +1,18 @@
+model Course {
+  id          Int         @id @default(autoincrement())
+  title       String
+  slug        String      @unique
+  description String?
+  visibility  Visibility
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  owner       User        @relation("CourseOwner", fields: [ownerId], references: [id])
+  ownerId     Int
+  collaborators Json?
+
+  courseRoles CourseRole[]
+  resources   Resource[]
+  forumThreads ForumThread[]
+  bookings    Booking[]
+}

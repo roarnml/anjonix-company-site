@@ -1,0 +1,102 @@
+{
+  "logo": "public/logo.png",
+  "links": [
+    {
+      "name": "Services",
+      "columns": [
+        {
+          "title": "Farm Projects",
+          "links": [
+            { "label": "Farm Setup & Management", "path": "/farm-setup" },
+            { "label": "Cash Crop Cultivation", "path": "/cash-crop" },
+            { "label": "Irrigation Planning", "path": "/irrigation" },
+            { "label": "Farm Staffing & Training", "path": "/farm-recruit" }
+          ]
+        },
+        {
+          "title": "Advanced Agriculture",
+          "links": [
+            { "label": "Precision Farming Implements", "path": "/precision-farming" },
+            { "label": "Automation Systems", "path": "/automations" },
+            { "label": "Agri-Data Monitoring", "path": "/agro-monitor" },
+            { "label": "Sensor Integration", "path": "/sensor-integrate" }
+          ]
+        },
+        {
+          "title": "Processing & Value Addition",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    },
+        {
+      "name": "Sales",
+      "columns": [
+        {
+          "title": "Partners",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support",
+      "columns": [
+        {
+          "title": "Partners",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partners",
+      "columns": [
+        {
+          "title": "Partners",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    },
+        {
+      "name": "About",
+      "columns": [
+        {
+          "title": "Partners",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    },
+        {
+      "name": "Partners",
+      "columns": [
+        {
+          "title": "Partners",
+          "links": [
+            { "label": "Tech Solutions", "path": "/tech" },
+            { "label": "Agricultural Investment", "path": "/agric" },
+            { "label": "Educational Services", "path": "/edu" }
+          ]
+        }
+      ]
+    }
+  ]
+}

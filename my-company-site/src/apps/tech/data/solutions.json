@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Solar Panel 300W",
+    "img": "/images/products/solar-panel-300w.jpg",
+    "desc": "High-efficiency monocrystalline solar panel for residential and commercial use.",
+    "spec": "300W, 18V, weatherproof",
+    "pricing": "$199",
+    "rating": 5,
+    "category": "smart"
+  },
+  {
+    "id": 2,
+    "name": "Smart Inverter 5kVA",
+    "img": "/images/products/smart-inverter-5kva.jpg",
+    "desc": "Hybrid inverter with smart load management and mobile app control.",
+    "spec": "5kVA, Pure Sine Wave, Wi-Fi enabled",
+    "pricing": "$799",
+    "rating": 5,
+    "category": "smart"
+  },
+  {
+    "id": 3,
+    "name": "Security Camera 4MP",
+    "img": "/images/products/security-camera-4mp.jpg",
+    "desc": "Outdoor IP camera with night vision and motion detection.",
+    "spec": "4MP, IP67, Infrared up to 30m",
+    "pricing": "$89",
+    "rating": 5,
+    "category": "smart"
+  },
+  {
+    "id": 4,
+    "name": "Networking Router AX3000",
+    "img": "/images/products/router-ax3000.jpg",
+    "desc": "High-speed Wi-Fi 6 router for home and small office use.",
+    "spec": "AX3000, Dual-band, MU-MIMO",
+    "pricing": "$129",
+    "rating": 5,
+    "category": "smart"
+  },
+  {
+    "id": 5,
+    "name": "Smart Home Hub",
+    "img": "/images/products/smart-home-hub.jpg",
+    "desc": "Central hub for controlling lights, security, and IoT devices.",
+    "spec": "Zigbee & Wi-Fi, Voice Assistant compatible",
+    "pricing": "$59",
+    "rating": 5,
+    "category": "smart"
+  }
+]

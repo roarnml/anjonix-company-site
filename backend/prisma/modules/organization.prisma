@@ -1,0 +1,16 @@
+model Organization {
+  id            Int      @id @default(autoincrement())
+  name          String
+  allowedDomain String   @unique
+  address       String?
+  contactEmail  String?
+  contactPhone  String?
+  website       String?
+  description   String?
+  createdAt     DateTime @default(now())
+
+  users         User[]
+  bookings      Booking[]     // 👈 back relation
+  forumPosts    ForumPost[]   // 👈 also needed below
+  forumThreads ForumThread[]
+}

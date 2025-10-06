@@ -1,0 +1,252 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            Int          @id @default(autoincrement())
+  uuid          String?       @unique @default(uuid())
+  email         String       @unique
+  name          String?
+  avatarUrl     String?
+  passwordHash  String
+  role          UserRole?
+  category      Category
+  verified      Boolean      @default(false)
+  orgName       String?
+  metadata      Json?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime?     @updatedAt
+
+  // relations
+  organization  Organization? @relation(fields: [organizationId], references: [id])
+  organizationId Int?
+  sessions      Session[]
+  courses       Course[]     @relation("CourseOwner")
+  courseRoles   CourseRole[]
+  resources     Resource[]
+  forumThreads  ForumThread[]
+  forumPosts    ForumPost[]
+  bookingsAsStudent  Booking[] @relation("BookingStudent")
+  bookingsAsInstructor Booking[] @relation("BookingInstructor")
+
+  // Back-relations
+  notifications Notification[]
+  activityLogs  ActivityLog[]
+  attachments   Attachment[]
+
+  refreshToken  String?
+}
+
+model Organization {
+  id            Int      @id @default(autoincrement())
+  name          String
+  allowedDomain String   @unique
+  address       String?
+  contactEmail  String?
+  contactPhone  String?
+  website       String?
+  description   String?
+  createdAt     DateTime @default(now())
+
+  users         User[]
+}
+
+model Session {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  lastActive DateTime
+  userId     Int
+  isActive  Boolean  @default(true)
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Course {
+  id          Int         @id @default(autoincrement())
+  title       String
+  slug        String      @unique
+  description String?
+  visibility  Visibility
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  owner       User        @relation("CourseOwner", fields: [ownerId], references: [id])
+  ownerId     Int
+  collaborators Json?
+
+  courseRoles CourseRole[]
+  resources   Resource[]
+  forumThreads ForumThread[]
+  bookings    Booking[]
+}
+
+model CourseRole {
+  id       Int   @id @default(autoincrement())
+  user     User  @relation(fields: [userId], references: [id])
+  userId   Int
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId Int
+  role     CourseRoleType
+}
+
+model Resource {
+  id          Int      @id @default(autoincrement())
+  course      Course   @relation(fields: [courseId], references: [id])
+  courseId    Int
+  uploader    User     @relation(fields: [uploaderId], references: [id])
+  uploaderId  Int
+  title       String
+  description String?
+  type        ResourceType
+  storageKey  String
+  mimeType    String
+  size        Int?
+  duration    Int?
+  previewUrl  String?
+  visibility  Visibility
+  createdAt   DateTime @default(now())
+}
+
+model ForumComment {
+  id        String   @id @default(uuid())
+  content   String
+  postId    String
+  userId    String
+  createdAt DateTime @default(now())
+
+  post ForumPost @relation(fields: [postId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+}
+
+
+model ForumThread {
+  id              Int         @id @default(autoincrement())
+  course          Course      @relation(fields: [courseId], references: [id])
+  courseId        Int
+  author          User        @relation(fields: [authorId], references: [id])
+  authorId        Int
+  title           String
+  content         String
+  acceptedAnswerId Int?
+  tags            String[]
+  viewsCount      Int         @default(0)
+  upvotes         Int         @default(0)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  posts           ForumPost[]
+}
+
+model ForumPost {
+  id          Int       @id @default(autoincrement())
+  title       String
+  thread      ForumThread @relation(fields: [threadId], references: [id])
+  threadId    Int
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    Int
+  content     String
+  organizationId String?
+  parentPost  ForumPost? @relation("CommentReplies", fields: [parentPostId], references: [id])
+  parentPostId Int?
+  replies     ForumPost[] @relation("CommentReplies")
+  upvotes     Int        @default(0)
+  createdAt   DateTime   @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+model Booking {
+  id            Int      @id @default(autoincrement())
+  student       User     @relation("BookingStudent", fields: [studentId], references: [id])
+  studentId     Int
+  instructor    User     @relation("BookingInstructor", fields: [instructorId], references: [id])
+  instructorId  Int
+  course        Course   @relation(fields: [courseId], references: [id])
+  courseId      Int
+  slotStart     DateTime
+  slotEnd       DateTime
+  status        BookingStatus
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  type      String
+  payload   Json
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  action     String
+  targetType String
+  targetId   Int
+  metadata   Json?
+  createdAt  DateTime @default(now())
+}
+
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId   Int
+  storageKey String
+  mimeType   String
+  size      Int?
+  createdAt DateTime @default(now())
+}
+
+// ENUMS
+enum UserRole {
+  admin
+  instructor
+  student
+  management
+}
+
+enum CourseRoleType {
+  lead
+  ta
+  guest
+}
+
+enum ResourceType {
+  note
+  video
+  image
+  file
+  link
+}
+
+enum Visibility {
+  public
+  private
+  courseOnly
+}
+
+enum BookingStatus {
+  requested
+  accepted
+  declined
+  cancelled
+  completed
+}
+
+enum Category {
+  enterprise
+  institution
+  online
+}

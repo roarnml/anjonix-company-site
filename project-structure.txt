@@ -1,0 +1,12 @@
+/root
+  /public-site        # Your main landing site with navbar
+  /apps
+    /tech             # Tech app (mounted at /tech)
+    /agric            # Agric app (mounted at /agric)
+    /edu              # Edu app (mounted at /edu)
+  /shared             # Shared components, layouts, utils, etc.
+  /src
+    App.tsx           # Global router setup
+    main.tsx
+  vite.config.ts
+  package.json

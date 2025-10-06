@@ -1,0 +1,9 @@
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId   Int
+  storageKey String
+  mimeType   String
+  size      Int?
+  createdAt DateTime @default(now())
+}

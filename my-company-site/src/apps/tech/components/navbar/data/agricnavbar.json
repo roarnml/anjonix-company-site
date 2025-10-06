@@ -1,0 +1,164 @@
+{
+  "logo": "/logo.png",
+  "links": [
+    {
+      "name": "Services",
+      "columns": [
+        {
+          "title": "Farm Projects",
+          "links": [
+            { "label": "Farm Setup & Management", "path": "/farm-setup" },
+            { "label": "Cash Crop Cultivation", "path": "/cash-crop" },
+            { "label": "Irrigation Planning", "path": "/irrigation" },
+            { "label": "Farm Staffing & Training", "path": "/farm-recruit" }
+          ]
+        },
+        {
+          "title": "Advanced Agriculture",
+          "links": [
+            { "label": "Precision Farming Implements", "path": "/precision-farming" },
+            { "label": "Automation Systems", "path": "/automations" },
+            { "label": "Agri-Data Monitoring", "path": "/agro-monitor" },
+            { "label": "Sensor Integration", "path": "/sensor-integrate" }
+          ]
+        },
+        {
+          "title": "Processing & Value Addition",
+          "links": [
+            { "label": "Cash Crop Processing (Industrial)", "path": "/cash-crop-processing" },
+            { "label": "Sorting & Packaging", "path": "/sorting-packaging" },
+            { "label": "Drying Units", "path": "/dry-units" },
+            { "label": "Agro Waste Management", "path": "/agro-waste" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "columns": [
+        {
+          "title": "Land & Inputs",
+          "links": [
+            { "label": "Agricultural Land", "path": "/land" },
+            { "label": "Seedlings", "path": "/seeds" },
+            { "label": "Fertilizers", "path": "/fertilizers" },
+            { "label": "Pesticides", "path": "/pesticides" }
+          ]
+        },
+        {
+          "title": "Machinery",
+          "links": [
+            { "label": "Farm Tractors", "path": "/farm-tractors" },
+            { "label": "Tillage Equipment", "path": "/equipment" },
+            { "label": "Harvesters", "path": "/harvester" },
+            { "label": "Farm Machinery Rentals", "path": "/farm-tools" }
+          ]
+        },
+        {
+          "title": "Smart Equipment",
+          "links": [
+            { "label": "Agricultural Production Equipment", "path": "/production-equipment" },
+            { "label": "Automation Farming Equipment", "path": "/farming-equipment" },
+            { "label": "Greenhouse Kits", "path": "/greenhouse" },
+            { "label": "Irrigation Controllers", "path": "/irrigation" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Support",
+      "columns": [
+        {
+          "title": "Technical Support",
+          "links": [
+            { "label": "Installation", "path": "/installation" },
+            { "label": "Maintainance", "path": "/maintainance" },
+            { "label": "On-field Help", "path": "/field-help" },
+            { "label": "Troubleshooting", "path": "/troubleshooting" }
+          ]
+        },
+        {
+          "title": "Farming Training",
+          "links": [
+            { "label": "Workshops", "path": "/workshops" },
+            { "label": "Demo Farms", "path": "/demo-farms" },
+            { "label": "Remote Advisory", "path": "/remote-advisory" },
+            { "label": "Best Practices", "path": "/best-practices" }
+          ]
+        },
+        {
+          "title": "Seasonal Assistance",
+          "links": [
+            { "label": "Planting Guides", "path": "/planting-guides" },
+            { "label": "Weather Planning", "path": "/weather-planning" },
+            { "label": "Crop Calendar", "path": "/crop-calendar" },
+            { "label": "Market Advisory", "path": "/market-advisory" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partners",
+      "columns": [
+        {
+          "title": "Our Network",
+          "links": [
+            { "label": "Agro Dealers", "path": "/dealers" },
+            { "label": "Farmers Co-ops", "path": "/farm-coop" },
+            { "label": "Local Agents", "path": "/agents" },
+            { "label": "Research Institutes", "path": "/research" }
+          ]
+        },
+                {
+          "title": "Join Us",
+          "links": [
+            { "label": "Become a Partner", "path": "/become-partners" },
+            { "label": "Franchise", "path": "/franchise" },
+            { "label": "Field Collaborators", "path": "/collaborators" },
+            { "label": "NGO Alliances", "path": "/allies" }
+          ]
+        },
+                {
+          "title": "Investment & Funding",
+          "links": [
+            { "label": "Agric Financing", "path": "/agric-finance" },
+            { "label": "Pilot Programs", "path": "/pilot-programs" },
+            { "label": "CSR Partnerships", "path": "/csr-patnerships" },
+            { "label": "Grants", "path": "/grants" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "columns": [
+        {
+          "title": "About Anjonix Agric",
+          "links": [
+            { "label": "Our Mission", "path": "/mission" },
+            { "label": "Vison & Goals", "path": "/vision" },
+            { "label": "Leadership Team", "path": "/team" },
+            { "label": "Impact Stories", "path": "/impact-stories" }
+          ]
+        },
+        {
+          "title": "Resources & Insights",
+          "links": [
+            { "label": "Blog", "path": "/agricblogs" },
+            { "label": "Reports", "path": "/reports" },
+            { "label": "Case Studies", "path": "/case-studies" },
+            { "label": "FAQs", "path": "/faqs" }
+          ]
+        },
+        {
+          "title": "Contact",
+          "links": [
+            { "label": "Contact Us", "path": "/contact" },
+            { "label": "Work With Us", "path": "/careers" },
+            { "label": "Support", "path": "/invest-affiliates" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+model User {
+  id            String       @id @default(uuid())
+  email         String       @unique
+  name          String?
+  avatarUrl     String?
+  passwordHash  String
+  role          UserRole?
+  category      Category
+  verified      Boolean      @default(false)
+  blocked       Boolean      @default(false) // ✅ add this field
+  orgName       String?
+  metadata      Json?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime?    @updatedAt
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?        // if Org also has uuid PK
+  sessions       Session[]
+  courses        Course[]     @relation("CourseOwner")
+  courseRoles    CourseRole[]
+  resources      Resource[]
+  bookingsAsStudent     Booking[] @relation("BookingStudent")
+  bookingsAsInstructor  Booking[] @relation("BookingInstructor")
+  notifications  Notification[]
+  activityLogs   ActivityLog[]
+  attachments    Attachment[]
+  forumPostsAsAuthor ForumPost[]    @relation("ForumPostAuthor")
+  forumPostsAsUser   ForumPost[]    @relation("ForumPostUser")
+  forumComments      ForumComment[] @relation("UserComments")
+  forumThreadsAsAuthor ForumThread[] @relation("ForumThreadAuthor")
+  forumThreadsAsUser  ForumThread[] @relation("UserThreads")
+
+  refreshToken   String?
+}
