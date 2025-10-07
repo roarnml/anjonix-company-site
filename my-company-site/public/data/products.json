@@ -1,0 +1,68 @@
+{
+  "Solar Panels": [
+    {
+      "id": "sp-001",
+      "vendor": "SunVolt Inc.",
+      "name": "SunVolt 300W Poly Solar Panel",
+      "price": 150,
+      "rating": 4.5,
+      "image": "/assets/products/solar_panel_1.jpg",
+      "description": "Efficient and durable polycrystalline solar panel.",
+      "specifications": {
+        "Wattage": "300W",
+        "Type": "Polycrystalline",
+        "Voltage": "24V",
+        "Warranty": "10 Years"
+      }
+    },
+    {
+      "id": "sp-002",
+      "vendor": "EcoRay",
+      "name": "EcoRay 250W Mono Solar Panel",
+      "price": 130,
+      "rating": 4.3,
+      "image": "/assets/products/solar_panel_2.jpg",
+      "description": "Monocrystalline panel suitable for rooftops and farms.",
+      "specifications": {
+        "Wattage": "250W",
+        "Type": "Monocrystalline",
+        "Voltage": "18V",
+        "Warranty": "12 Years"
+      }
+    }
+  ],
+  "Wind Turbine": [
+    {
+      "id": "wt-001",
+      "vendor": "Turbix",
+      "name": "Turbix 1.5kW Wind Turbine",
+      "price": 650,
+      "rating": 4.2,
+      "image": "/assets/products/wind_turbine_1.jpg",
+      "description": "Rugged wind turbine for off-grid energy systems.",
+      "specifications": {
+        "Power": "1.5kW",
+        "Voltage": "48V",
+        "Blades": "3",
+        "Warranty": "15 Years"
+      }
+    }
+  ],
+  "Inverter": [
+    {
+      "id": "inv-001",
+      "vendor": "PowerSafe",
+      "name": "PowerSafe 5kVA Hybrid Inverter",
+      "price": 850,
+      "rating": 4.6,
+      "image": "/assets/products/inverter_1.jpg",
+      "description": "Hybrid inverter with solar and grid support.",
+      "specifications": {
+        "Power": "5kVA",
+        "Input": "Solar/Grid",
+        "Battery Type": "Lithium",
+        "Warranty": "5 Years"
+      }
+    }
+  ]
+}
