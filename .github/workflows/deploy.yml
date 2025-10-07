@@ -1,0 +1,33 @@
+name: 🚀 Deploy Vite Frontend to Smart Web via FTP
+
+on:
+  push:
+    branches:
+      - main   # deploy automatically whenever main branch is updated
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧩 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Install dependencies and build (Vite)
+        run: |
+          cd my-company-site
+          npm ci
+          npm run build
+
+      - name: 📤 Deploy via FTP to Smart Web
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: my-company-site/dist
+          server-dir: /public_html/
+          timeout: 60000
+          dangerous-clean-slate: false
