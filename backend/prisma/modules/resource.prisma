@@ -3,7 +3,7 @@ model Resource {
   course      Course   @relation(fields: [courseId], references: [id])
   courseId    Int
   uploader    User     @relation(fields: [uploaderId], references: [id])
-  uploaderId  Int
+  uploaderId  String
   title       String
   description String?
   type        ResourceType

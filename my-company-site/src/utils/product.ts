@@ -2,7 +2,7 @@
 import axios from "axios";
 import type { Product } from "../apps/tech/types/product";
 
-const API_URL = "http://localhost:5000/api"; // change this if backend runs elsewhere
+const API_URL = "https://anjonix-company-site.onrender.com/api"; // change this if backend runs elsewhere
 
 // ✅ Get all products (public)
 export async function getProducts(): Promise<Product[]> {

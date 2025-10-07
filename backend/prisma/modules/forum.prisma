@@ -2,8 +2,9 @@ model ForumComment {
   id        String   @id @default(uuid())
   content   String
   postId    Int
-  userId    Int
+  userId    String
   createdAt DateTime @default(now())
+  deletedAt DateTime?  // 👈 for soft-delete
 
   post ForumPost @relation(fields: [postId], references: [id])
   user   User @relation("UserComments", fields: [userId], references: [id])
@@ -16,7 +17,7 @@ model ForumThread {
   course          Course      @relation(fields: [courseId], references: [id])
   courseId        Int
   author          User       @relation("ForumThreadAuthor", fields: [authorId], references: [id])
-  authorId        Int
+  authorId        String
   title           String
   content         String
   acceptedAnswerId Int?
@@ -29,7 +30,7 @@ model ForumThread {
   organizationId  Int
   organization    Organization @relation(fields: [organizationId], references: [id])
 
-  userId Int
+  userId String
   user   User @relation("UserThreads", fields: [userId], references: [id])
 
 }
@@ -42,10 +43,11 @@ model ForumPost {
 
   // Relation #1 → Author of the post
   author      User      @relation("ForumPostAuthor", fields: [authorId], references: [id])
-  authorId    Int
+  authorId    String
 
   content     String
   upvotes     Int        @default(0)
+  views          Int          @default(0)
   createdAt   DateTime   @default(now())
 
   // Replies (self-relation)
@@ -55,11 +57,13 @@ model ForumPost {
 
   // Relation #2 → General user (e.g., participant)
   user          User @relation("ForumPostUser", fields: [userId], references: [id])
-  userId        Int
+  userId        String
 
   // Org scoping
   organizationId Int?
   organization   Organization? @relation(fields: [organizationId], references: [id])
 
   comments       ForumComment[]   // 👈 opposite of ForumComment.post
+  deletedAt      DateTime?    // 👈 for soft-delete
+
 }

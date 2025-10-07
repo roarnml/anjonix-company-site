@@ -8,9 +8,10 @@ model Organization {
   website       String?
   description   String?
   createdAt     DateTime @default(now())
+  deletedAt     DateTime?   // 👈 for soft delete
 
   users         User[]
-  bookings      Booking[]     // 👈 back relation
-  forumPosts    ForumPost[]   // 👈 also needed below
-  forumThreads ForumThread[]
+  bookings      Booking[]
+  forumPosts    ForumPost[]
+  forumThreads  ForumThread[]
 }

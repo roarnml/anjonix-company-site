@@ -8,11 +8,12 @@ model Course {
   updatedAt   DateTime    @updatedAt
 
   owner       User        @relation("CourseOwner", fields: [ownerId], references: [id])
-  ownerId     Int
+  ownerId     String
   collaborators Json?
 
   courseRoles CourseRole[]
   resources   Resource[]
   forumThreads ForumThread[]
   bookings    Booking[]
+  assessment  AssessmentRecord[]
 }

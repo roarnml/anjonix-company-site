@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "CommonJS",               // or "NodeNext" if you want ESM
-    "moduleResolution": "Node",         // or "NodeNext" if using ESM
+    "moduleResolution": "node",         // or "NodeNext" if using ESM
     "outDir": "dist",
     "rootDir": "src",
     "esModuleInterop": true,

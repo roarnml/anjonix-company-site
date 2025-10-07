@@ -14,6 +14,9 @@ generator client {
 
 
 enum UserRole {
+  superuser
+  visitor
+  vendor
   admin
   instructor
   student
@@ -64,7 +67,7 @@ enum Assessment{
 model ActivityLog {
   id         Int      @id @default(autoincrement())
   user       User     @relation(fields: [userId], references: [id])
-  userId     Int
+  userId     String
   action     String
   targetType String
   targetId   Int
@@ -72,10 +75,24 @@ model ActivityLog {
   createdAt  DateTime @default(now())
 }
 
+model AssessmentRecord {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  status    Assessment
+  score     Int?
+  feedback  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
 model Attachment {
   id        Int      @id @default(autoincrement())
   owner   User @relation(fields: [ownerId], references: [id])
-  ownerId   Int
+  ownerId   String
   storageKey String
   mimeType   String
   size      Int?
@@ -85,9 +102,9 @@ model Attachment {
 model Booking {
   id            Int      @id @default(autoincrement())
   student       User     @relation("BookingStudent", fields: [studentId], references: [id])
-  studentId     Int
+  studentId     String
   instructor    User     @relation("BookingInstructor", fields: [instructorId], references: [id])
-  instructorId  Int
+  instructorId  String
   course        Course   @relation(fields: [courseId], references: [id])
   courseId      Int
   slotStart     DateTime
@@ -112,20 +129,21 @@ model Course {
   updatedAt   DateTime    @updatedAt
 
   owner       User        @relation("CourseOwner", fields: [ownerId], references: [id])
-  ownerId     Int
+  ownerId     String
   collaborators Json?
 
   courseRoles CourseRole[]
   resources   Resource[]
   forumThreads ForumThread[]
   bookings    Booking[]
+  assessment  AssessmentRecord[]
 }
 
 
 model CourseRole {
   id       Int   @id @default(autoincrement())
   user     User  @relation(fields: [userId], references: [id])
-  userId   Int
+  userId   String
   course   Course @relation(fields: [courseId], references: [id])
   courseId Int
   role     CourseRoleType
@@ -135,8 +153,9 @@ model ForumComment {
   id        String   @id @default(uuid())
   content   String
   postId    Int
-  userId    Int
+  userId    String
   createdAt DateTime @default(now())
+  deletedAt DateTime?  // 👈 for soft-delete
 
   post ForumPost @relation(fields: [postId], references: [id])
   user   User @relation("UserComments", fields: [userId], references: [id])
@@ -149,7 +168,7 @@ model ForumThread {
   course          Course      @relation(fields: [courseId], references: [id])
   courseId        Int
   author          User       @relation("ForumThreadAuthor", fields: [authorId], references: [id])
-  authorId        Int
+  authorId        String
   title           String
   content         String
   acceptedAnswerId Int?
@@ -162,7 +181,7 @@ model ForumThread {
   organizationId  Int
   organization    Organization @relation(fields: [organizationId], references: [id])
 
-  userId Int
+  userId String
   user   User @relation("UserThreads", fields: [userId], references: [id])
 
 }
@@ -175,10 +194,11 @@ model ForumPost {
 
   // Relation #1 → Author of the post
   author      User      @relation("ForumPostAuthor", fields: [authorId], references: [id])
-  authorId    Int
+  authorId    String
 
   content     String
   upvotes     Int        @default(0)
+  views          Int          @default(0)
   createdAt   DateTime   @default(now())
 
   // Replies (self-relation)
@@ -188,24 +208,32 @@ model ForumPost {
 
   // Relation #2 → General user (e.g., participant)
   user          User @relation("ForumPostUser", fields: [userId], references: [id])
-  userId        Int
+  userId        String
 
   // Org scoping
   organizationId Int?
   organization   Organization? @relation(fields: [organizationId], references: [id])
 
   comments       ForumComment[]   // 👈 opposite of ForumComment.post
+  deletedAt      DateTime?    // 👈 for soft-delete
+
 }
 
 
 model Notification {
   id        Int      @id @default(autoincrement())
   user      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  userId    String
   type      String
+  message     String
+  isRead      Boolean   @default(false)
   payload   Json
   readAt    DateTime?
   createdAt DateTime @default(now())
+
+  relatedPostId   Int?
+  relatedThreadId Int?
+  relatedUserId   String?
 }
 
 model Organization {
@@ -218,11 +246,12 @@ model Organization {
   website       String?
   description   String?
   createdAt     DateTime @default(now())
+  deletedAt     DateTime?   // 👈 for soft delete
 
   users         User[]
-  bookings      Booking[]     // 👈 back relation
-  forumPosts    ForumPost[]   // 👈 also needed below
-  forumThreads ForumThread[]
+  bookings      Booking[]
+  forumPosts    ForumPost[]
+  forumThreads  ForumThread[]
 }
 
 
@@ -231,7 +260,7 @@ model Resource {
   course      Course   @relation(fields: [courseId], references: [id])
   courseId    Int
   uploader    User     @relation(fields: [uploaderId], references: [id])
-  uploaderId  Int
+  uploaderId  String
   title       String
   description String?
   type        ResourceType
@@ -249,51 +278,45 @@ model Session {
   id         Int      @id @default(autoincrement())
   token      String   @unique
   lastActive DateTime
-  userId     Int
+  userId     String
   isActive  Boolean  @default(true)
 
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            Int          @id @default(autoincrement())
-  uuid          String?       @unique @default(uuid())
+  id            String       @id @default(cuid())
   email         String       @unique
   name          String?
   avatarUrl     String?
   passwordHash  String
   role          UserRole?
+  reputation    Int      @default(0)  // 👈 Gamified metric
   category      Category
   verified      Boolean      @default(false)
+  blocked       Boolean      @default(false) // ✅ add this field
   orgName       String?
   metadata      Json?
   createdAt     DateTime     @default(now())
   updatedAt     DateTime?    @updatedAt
 
   organization   Organization? @relation(fields: [organizationId], references: [id])
-  organizationId Int?
+  organizationId Int?       // if Org also has uuid PK
   sessions       Session[]
   courses        Course[]     @relation("CourseOwner")
   courseRoles    CourseRole[]
   resources      Resource[]
-
-  
   bookingsAsStudent     Booking[] @relation("BookingStudent")
   bookingsAsInstructor  Booking[] @relation("BookingInstructor")
-
-
   notifications  Notification[]
   activityLogs   ActivityLog[]
   attachments    Attachment[]
-
   forumPostsAsAuthor ForumPost[]    @relation("ForumPostAuthor")
   forumPostsAsUser   ForumPost[]    @relation("ForumPostUser")
   forumComments      ForumComment[] @relation("UserComments")
-
-
   forumThreadsAsAuthor ForumThread[] @relation("ForumThreadAuthor")
   forumThreadsAsUser  ForumThread[] @relation("UserThreads")
-
+  assessment          AssessmentRecord[]
 
   refreshToken   String?
 }

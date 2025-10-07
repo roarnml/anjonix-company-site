@@ -60,3 +60,4 @@ export const errorHandler = (err: any, req: Request, res: Response, _next: NextF
   console.error(err.stack);
   res.status(500).json({ message: "Internal server error" });
 };
+

@@ -1,4 +1,7 @@
 enum UserRole {
+  superuser
+  visitor
+  vendor
   admin
   instructor
   student

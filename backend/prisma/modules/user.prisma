@@ -1,10 +1,11 @@
 model User {
-  id            String       @id @default(uuid())
+  id            String       @id @default(cuid())
   email         String       @unique
   name          String?
   avatarUrl     String?
   passwordHash  String
   role          UserRole?
+  reputation    Int      @default(0)  // 👈 Gamified metric
   category      Category
   verified      Boolean      @default(false)
   blocked       Boolean      @default(false) // ✅ add this field
@@ -14,7 +15,7 @@ model User {
   updatedAt     DateTime?    @updatedAt
 
   organization   Organization? @relation(fields: [organizationId], references: [id])
-  organizationId String?        // if Org also has uuid PK
+  organizationId Int?       // if Org also has uuid PK
   sessions       Session[]
   courses        Course[]     @relation("CourseOwner")
   courseRoles    CourseRole[]
@@ -29,6 +30,7 @@ model User {
   forumComments      ForumComment[] @relation("UserComments")
   forumThreadsAsAuthor ForumThread[] @relation("ForumThreadAuthor")
   forumThreadsAsUser  ForumThread[] @relation("UserThreads")
+  assessment          AssessmentRecord[]
 
   refreshToken   String?
 }
