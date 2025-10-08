@@ -18,8 +18,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: 📦 Install dependencies
+        working-directory: ./my-company-site
+        run: npm install
 
       - name: Build project
+        working-directory: ./my-company-site
         run: |
           npm install
           npm run build
@@ -28,51 +32,11 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.anjonixgloballimited.com
-          username: ${{ secrets.FTP_USERNAME }}
+          username: deployuser@anjonixgloballimited.com
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
           port: 21
-          local-dir: ./dist
+          local-dir: ./dist/   # or ./frontend/build
           server-dir: /public_html/
-          state-name: .ftp-deploy-sync-state.json
-          git-ftp-args: --insecure
-          dry-run: false
-          exclude: |
-            **/.git*
-            **/.github*
-            **/node_modules*
-            **/tests*
-            **/*.log
-            **/README.md
-            **/docs*
-            **/src*
-            **/config*
-            **/scripts*
-            **/.*.swp
-            **/.DS_Store
-            **/Thumbs.db
-            **/npm-debug.log
-            **/yarn-error.log
-            **/.env*
-            **/.next*
-            **/.nuxt*
-            **/dist/tests*
-            **/dist/docs*
-            **/dist/src*
-            **/dist/config*
-            **/dist/scripts*
-            **/dist/*.log
-            **/dist/*.swp
-            **/dist/.DS_Store
-            **/dist/Thumbs.db
-            **/dist/npm-debug.log
-            **/dist/yarn-error.log
-            **/dist/.env*
-            **/dist/.next*
-            **/dist/.nuxt*
-            **/dist/node_modules*
-            **/backend*
-            **/my-company-site*
-            **/build*
-            **/public*
-            **/logs*
+          passive: true
+          max-conn: 1
