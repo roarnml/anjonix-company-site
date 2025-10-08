@@ -1,33 +1,78 @@
-name: 🚀 Deploy Vite Frontend to Smart Web via FTP
+name: 🚀 Deploy to Smart Web via FTP
 
 on:
   push:
     branches:
-      - main   # deploy automatically whenever main branch is updated
+      - main   # or your main branch (could be master)
 
 jobs:
-  build-and-deploy:
+  deploy:
+    name: Upload frontend to Smart Web
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧩 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 📦 Install dependencies and build (Vite)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build project
         run: |
-          cd my-company-site
-          npm ci
+          npm install
           npm run build
 
-      - name: 📤 Deploy via FTP to Smart Web
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ftp.anjonixgloballimited.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
           port: 21
-          local-dir: my-company-site/dist/
+          local-dir: ./dist
           server-dir: /public_html/
-          timeout: 60000
-          dangerous-clean-slate: false
+          state-name: .ftp-deploy-sync-state.json
+          git-ftp-args: --insecure
+          dry-run: false
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules*
+            **/tests*
+            **/*.log
+            **/README.md
+            **/docs*
+            **/src*
+            **/config*
+            **/scripts*
+            **/.*.swp
+            **/.DS_Store
+            **/Thumbs.db
+            **/npm-debug.log
+            **/yarn-error.log
+            **/.env*
+            **/.next*
+            **/.nuxt*
+            **/dist/tests*
+            **/dist/docs*
+            **/dist/src*
+            **/dist/config*
+            **/dist/scripts*
+            **/dist/*.log
+            **/dist/*.swp
+            **/dist/.DS_Store
+            **/dist/Thumbs.db
+            **/dist/npm-debug.log
+            **/dist/yarn-error.log
+            **/dist/.env*
+            **/dist/.next*
+            **/dist/.nuxt*
+            **/dist/node_modules*
+            **/backend*
+            **/my-company-site*
+            **/build*
+            **/public*
+            **/logs*
