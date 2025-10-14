@@ -623,6 +623,7 @@ export default function Signup() {
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "../api/api"; // Axios instance
+import { safeApiCall } from "../utils/safeApi"; // Utility for safe API calls
 
 /*interface Params {
   category?: string;
@@ -652,6 +653,20 @@ export default function Signup() {
 
   // Load existing orgs if needed
   useEffect(() => {
+    // 1️⃣ Try to restore offline session (frontline recovery logic)
+    const offlineUser = localStorage.getItem("offlineUser");
+    if (offlineUser) {
+      const user = JSON.parse(offlineUser);
+      console.log("Restoring offline session:", user);
+      // You can restore state or auto-fill fields if you want:
+      setEmail(user.email || "");
+      setOrgName(user.orgName || "");
+      setOrgDomain(user.allowedDomain || "");
+    }
+  }, []); // runs once when component mounts
+
+  useEffect(() => {
+    // 2️⃣ Load organizations if category isn’t "online"
     if (category && category !== "online") {
       const fetchOrgs = async () => {
         try {
@@ -666,13 +681,14 @@ export default function Signup() {
     }
   }, [category]);
 
+
   const normalizedRole = role?.replace("-portal", "").toLowerCase();
   const canSignUp =
     category === "online" ||
     (["enterprise", "institution"].includes(category || "") &&
       ["management", "instructor", "student"].includes(normalizedRole || ""));
       
-  const handleSignup = async (e: React.FormEvent) => {
+  /*const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSignUp) return alert("Signup is not allowed for this portal.");
     if (password !== confirmPassword) return alert("Passwords do not match.");
@@ -690,7 +706,7 @@ export default function Signup() {
         }
 
         // Query backend to see if domain exists
-        const domainRes = await api.get<{ exists: boolean; org?: Organization }>(
+        const domainRes = await api.get<{ exists: boolean, org?: Organization }>(
           `/organizations/check-domain?domain=${orgDomain.toLowerCase()}`
         );
 
@@ -757,63 +773,62 @@ export default function Signup() {
     } finally {
       setLoading(false);
     }
-  };
+  };*/
 
 
-  /*const handleSignup = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!canSignUp) return alert("Signup is not allowed for this portal.");
     if (password !== confirmPassword) return alert("Passwords do not match.");
 
     const payload: any = { email, password, category, role: normalizedRole };
 
-    // Only include org info if relevant
-    if (category !== "online") {
-      if (["management", "instructor"].includes(normalizedRole!)) {
-        if (!orgName || !orgDomain) {
-          // Redirect to organization KYC page
-          navigate("/organization-kyc", {
-            state: { email, category, role: normalizedRole },
-          });
-          return;
-        }
-        payload.orgName = orgName;
-        payload.allowedDomain = orgDomain.toLowerCase();
-      } else if (normalizedRole === "student" && selectedOrgId) {
-        payload.organizationId = selectedOrgId;
-      }
-    }
-
-    console.log("Signup payload:", payload);
-
     try {
       setLoading(true);
-      const res = await api.post("/auth/signup", payload);
 
-      if (res.data.action === "organizationKYCRequired") {
-        console.log(res.data.message)
-        navigate("/organization-kyc", {
-          state: {
-            email,
-            category,
-            role: normalizedRole,
-            orgName: payload.orgName,
-            allowedDomain: payload.allowedDomain,
-          },
-        });
+      const { success, data, error } = await safeApiCall(() =>
+        api.post("/auth/signup", payload)
+      );
+
+      if (success && data) {
+        const res: any = data;
+        alert(res.data.message || "Signup successful!");
+        navigate(`/tech/user/${category}/${role}`);
         return;
       }
 
-      alert(res.data.message || "Signup successful! Check your email for verification.");
-      navigate(`/tech/user/${category}/${role}`);
-    } catch (err: any) {
+      // Fallback mode if backend unreachable
+      if (!success && (!error.response || error.code === "ERR_NETWORK")) {
+        console.warn("Backend not reachable. Using local fallback.");
 
-      alert(err.error.value);
+        const localUser = {
+          email,
+          category,
+          role: normalizedRole,
+          createdAt: new Date().toISOString(),
+          temporary: true,
+        };
+
+        localStorage.setItem("offlineUser", JSON.stringify(localUser));
+
+        alert(
+          "Backend not reachable. You're in offline mode — your data will sync later."
+        );
+        navigate(`/tech/user/${category}/${role}`);
+        return;
+      }
+
+      // Other backend error
+      alert(error?.response?.data?.error || "Signup failed");
+    } catch (err: any) {
+      console.warn("Backend unreachable, saving signup offline...");
+      localStorage.setItem("offlineUser", JSON.stringify(payload));
+      alert("You’re offline! We’ll sync your signup when the server is reachable again.");
+      navigate(`/tech/user/${category}/${role}`);
     } finally {
-      setLoading(false);
-    }
-  };*/
+        setLoading(false);
+      }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">

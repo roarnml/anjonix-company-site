@@ -194,12 +194,12 @@ const materials: Material[] = [
   },
   {
     week: "Week 2",
-    title: "Line-Following Robot",
+    title: "Traffic Light System With Timer",
     description:
-      "Design a robot that follows a track using IR sensors and feedback control.",
-    notes: "/downloads/week2-line-follower.pdf",
-    videoLink: "/videos/week2-line-follower.mp4",
-    videoFile: "/downloads/week2-line-follower.mp4",
+      "Design a Traffic Light with Timer and a beeping sound count down for time to go",
+    notes: "/downloads/MULTIPURPOSE 7-SEGEMENT DISPLAY SYSTEM.pptx",
+    videoLink: "/downloads/videos/Led_with_Buzzer_and_timer1.mp4",
+    videoFile: "/downloads/videos/Led_with_Buzzer_and_timer1.mp4",
     enabled: true,
   },
   {
@@ -519,7 +519,7 @@ export default function TrainingMaterials() {
               className="absolute top-3 right-3 z-40 bg-white/10 hover:bg-white/20 rounded-full p-1.5"
               aria-label="Close video"
             >
-              <X className="w-6 h-6 text-white" />
+              <X className="w-6 h-6 text-black" />
             </button>
 
             <div className="w-full aspect-video">

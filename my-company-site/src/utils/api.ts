@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://anjonix-company-site.onrender.com", // your backend
+  baseURL: "http://localhost:5000/api/", // your backend
   withCredentials: true,            // allows cookies
 });
 

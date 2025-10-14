@@ -1,22 +1,27 @@
 ---
 deployment:
   tasks:
-    # 1️⃣ Set the deployment path
-    - export DEPLOYPATH=/home/anjonixg/public_html
+    # 1️⃣ Define deployment paths
+    - export FRONTEND_PATH=/home/anjonixg/public_html
+    - export BACKEND_PATH=/home/anjonixg/backend
 
-    # 2️⃣ Install and build the frontend
+    # 2️⃣ Build the Vite + React frontend
     - cd my-company-site
     - npm install --legacy-peer-deps
     - npm run build
 
-    # 3️⃣ Copy built frontend files to your live public_html folder
-    - /bin/cp -R dist/* $DEPLOYPATH
+    # 3️⃣ Deploy the built frontend to public_html
+    - /bin/cp -R dist/* $FRONTEND_PATH
 
-    # 4️⃣ (Optional) Deploy backend files if you're running an API on the same server
-    # Uncomment and adjust if you want backend deployment too:
-    # - export BACKENDPATH=/home/YOUR_CPANEL_USERNAME/backend
-    # - mkdir -p $BACKENDPATH
-    # - /bin/cp -R ../backend/* $BACKENDPATH
+    # 4️⃣ Deploy backend files to backend folder
+    - cd ..
+    - mkdir -p $BACKEND_PATH
+    - /bin/cp -R backend/* $BACKEND_PATH
 
-    # 5️⃣ (Optional) Restart your backend server (if using Node.js app)
-    # - touch $BACKENDPATH/tmp/restart.txt
+    # 5️⃣ (Optional) Restart your backend (if using Node.js app)
+    #    If you’re using Passenger or PM2, uncomment the relevant command below:
+    # - touch $BACKEND_PATH/tmp/restart.txt
+    # - pm2 restart all
+
+    # ✅ Clean log
+    - echo "🚀 Deployment completed successfully!"

@@ -6,3 +6,4 @@ export const PUBLIC_EMAIL_DOMAINS = [
   'icloud.com','mail.com','gmx.com','live.com','msn.com',
   'yandex.com','protonmail.com','zoho.com'
 ];
+export const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";

@@ -1,38 +1,6 @@
-/*export default function OfferingCard() {
-  const offerings = [
-    {
-      title: "Tech Solutions",
-      description: "Web & mobile apps, AI tools, cybersecurity, cloud services — we build digital systems that scale.",
-      color: "text-blue-600"
-    },
-    {
-      title: "Smart Agriculture",
-      description: "Empowering farmers and agribusinesses with technology-driven tools and data insights.",
-      color: "text-green-600"
-    },
-    {
-      title: "Education Services",
-      description: "Modern learning platforms, training, curriculum design, and digital classrooms for the future.",
-      color: "text-indigo-600"
-    }
-  ]
 
-  return (
-    <section className="py-16 px-6 bg-gray-50">
-      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">Our Core Offerings</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {offerings.map((offering, index) => (
-          <div key={index} className="p-6 bg-white shadow rounded">
-            <h3 className={`text-xl font-bold mb-2 ${offering.color}`}>{offering.title}</h3>
-            <p className="text-gray-600">{offering.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
-}*/
 
-import edu from "../../../assets/public-site/components/Home/edu.jpg"
+/*import edu from "../../../assets/public-site/components/Home/edu.jpg"
 import tech from "../../../assets/public-site/components/Home/tech.jpg"
 import agric from "../../../assets/public-site/components/Home/agric.png"
 export default function OfferingCard() {
@@ -77,4 +45,91 @@ export default function OfferingCard() {
       </div>
     </section>
   );
+}
+*/
+
+import { motion } from "framer-motion"
+import edu from "../../../assets/public-site/components/Home/edu.jpg"
+import tech from "../../../assets/public-site/components/Home/tech.jpg"
+import agric from "../../../assets/public-site/components/Home/agric.png"
+
+export default function WhatWeDoSection() {
+  const offerings = [
+    {
+      title: "Tech Solutions",
+      description:
+        "Smart surveillance, custom automation, and enterprise-grade IT support that keep your systems alive and your mind at ease.",
+      color: "from-blue-600 to-blue-800",
+      image: tech,
+    },
+    {
+      title: "Education & Training",
+      description:
+        "Robotics, embedded systems, and web development courses that make learning fun, practical, and future-proof.",
+      color: "from-indigo-600 to-indigo-800",
+      image: edu,
+    },
+    {
+      title: "Agriculture & Investment",
+      description:
+        "From agri-tech tools to secure farmland investment opportunities, we make the future of farming digital, safe, and profitable.",
+      color: "from-green-600 to-green-800",
+      image: agric,
+    },
+  ]
+
+  return (
+    <section className="relative py-20 px-6 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          🧠 What We Do
+        </h2>
+        <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          We turn ideas into intelligent ecosystems — blending technology, education, and agriculture to build
+          a connected future that works for everyone.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        {offerings.map((offering, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.15, duration: 0.6 }}
+            viewport={{ once: true }}
+            className={`relative h-80 rounded-2xl overflow-hidden shadow-xl cursor-pointer group bg-gradient-to-br ${offering.color}`}
+          >
+            {/* Background Image */}
+            <img
+              src={offering.image}
+              alt={offering.title}
+              className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-40 transition duration-500"
+            />
+
+            {/* Overlay and Content */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent group-hover:opacity-90 transition duration-500"></div>
+            <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white transition-all duration-500 group-hover:translate-y-[-5px]">
+              <h3 className="text-2xl font-bold mb-2">{offering.title}</h3>
+              <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+                {offering.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Animated Glow Background */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-700" />
+    </section>
+  )
 }

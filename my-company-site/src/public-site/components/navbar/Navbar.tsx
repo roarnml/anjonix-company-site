@@ -44,12 +44,12 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
   // ---------- DESKTOP DROPDOWN ----------
   const renderDropdownColumns = (sections: SubMenuItem[]) => {
     return (
-      <div className="fixed left-0 top-[60px] mt-2 w-screen bg-white shadow-lg border-t z-50 text-black">
+      <div className="fixed left-0 top-[60px] mt-2 w-screen bg-white shadow-lg border-t z-50 text-white">
         <div className="max-w-7xl mx-auto px-8 py-8 grid grid-cols-3 gap-12">
           {sections.map((section) => (
             <div key={section.title} className="space-y-3">
               {/* Section title */}
-              <h4 className="text-base font-semibold text-gray-900 border-b pb-1">
+              <h4 className="text-base font-semibold text-white border-b pb-1">
                 {section.title}
               </h4>
 
@@ -98,7 +98,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
           onClick={() =>
             setDropdownOpen(dropdownOpen === link.name ? null : link.name)
           }
-          className={`px-4 py-2 rounded-md text-sm font-medium transition text-black ${
+          className={`px-4 py-2 rounded-md text-sm font-medium transition text-white ${
             dropdownOpen === link.name
               ? "text-blue-600 border-b-2 border-blue-600"
               : "hover:text-blue-600"
@@ -118,7 +118,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
         <Link
           key={link.name}
           to={link.path}
-          className={`px-4 py-2 rounded-md text-sm font-medium text-black hover:text-blue-600 ${
+          className={`px-4 py-2 rounded-md text-sm font-medium text-white hover:text-blue-600 ${
             location.pathname === link.path ? "text-blue-600 font-bold" : ""
           }`}
         >
@@ -227,7 +227,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
 
   // ---------- RENDER ----------
   return (
-    <nav className="bg-gradient-to-br from-slate-500 to-slate-800 shadow-md sticky top-0 z-50 w-full text-black">
+    <nav className="bg-gradient-to-br from-slate-500 to-slate-800 shadow-md sticky top-0 z-50 w-full text-white">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
@@ -235,7 +235,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 items-center text-black">
+        <div className="hidden md:flex space-x-6 items-center text-white">
           {navbarData.links.map((link) => renderLink(link))}
         </div>
 

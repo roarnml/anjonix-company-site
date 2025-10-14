@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",               // or "NodeNext" if you want ESM
+    "module": "CommonJS",  
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "ignoreDeprecations": "5.0",
     "moduleResolution": "node",         // or "NodeNext" if using ESM
     "outDir": "dist",
     "rootDir": "src",

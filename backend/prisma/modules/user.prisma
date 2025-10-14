@@ -25,6 +25,7 @@ model User {
   notifications  Notification[]
   activityLogs   ActivityLog[]
   attachments    Attachment[]
+  payments       Payment[]
   forumPostsAsAuthor ForumPost[]    @relation("ForumPostAuthor")
   forumPostsAsUser   ForumPost[]    @relation("ForumPostUser")
   forumComments      ForumComment[] @relation("UserComments")

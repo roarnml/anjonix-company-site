@@ -39,9 +39,10 @@ export const listOrgs = async (_req: Request, res: Response) => {
 // Get single organization
 export const getOrg = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = Number(req.params.id);
+    console.log("Fetching org with ID:", id);
     const org = await prisma.organization.findFirst({
-      where: { id: Number(id), deletedAt: null },
+      where: { id, deletedAt: null },
       include: {
         users: true,
         forumThreads: true,
@@ -49,6 +50,10 @@ export const getOrg = async (req: Request, res: Response) => {
         bookings: true,
       },
     });
+    if (isNaN(id)) {
+      return res.status(400).json({ message: "Invalid organization ID" });
+    }
+
     if (!org) return res.status(404).json({ error: "Organization not found." });
     return res.json(org);
   } catch (error) {

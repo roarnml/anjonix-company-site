@@ -1,0 +1,11 @@
+model Payment {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  method      String
+  amount      Float
+  currency    String
+  status      String
+  reference   String    @unique
+  createdAt   DateTime  @default(now())
+}

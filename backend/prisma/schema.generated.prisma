@@ -255,6 +255,19 @@ model Organization {
 }
 
 
+model Payment {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  method      String
+  amount      Float
+  currency    String
+  status      String
+  reference   String    @unique
+  createdAt   DateTime  @default(now())
+}
+
+
 model Resource {
   id          Int      @id @default(autoincrement())
   course      Course   @relation(fields: [courseId], references: [id])
@@ -311,6 +324,7 @@ model User {
   notifications  Notification[]
   activityLogs   ActivityLog[]
   attachments    Attachment[]
+  payments       Payment[]
   forumPostsAsAuthor ForumPost[]    @relation("ForumPostAuthor")
   forumPostsAsUser   ForumPost[]    @relation("ForumPostUser")
   forumComments      ForumComment[] @relation("UserComments")
