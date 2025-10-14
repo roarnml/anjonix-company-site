@@ -1,0 +1,22 @@
+---
+deployment:
+  tasks:
+    # 1️⃣ Set the deployment path
+    - export DEPLOYPATH=/home/YOUR_CPANEL_USERNAME/public_html
+
+    # 2️⃣ Install and build the frontend
+    - cd my-company-site
+    - npm install --legacy-peer-deps
+    - npm run build
+
+    # 3️⃣ Copy built frontend files to your live public_html folder
+    - /bin/cp -R dist/* $DEPLOYPATH
+
+    # 4️⃣ (Optional) Deploy backend files if you're running an API on the same server
+    # Uncomment and adjust if you want backend deployment too:
+    # - export BACKENDPATH=/home/YOUR_CPANEL_USERNAME/backend
+    # - mkdir -p $BACKENDPATH
+    # - /bin/cp -R ../backend/* $BACKENDPATH
+
+    # 5️⃣ (Optional) Restart your backend server (if using Node.js app)
+    # - touch $BACKENDPATH/tmp/restart.txt
