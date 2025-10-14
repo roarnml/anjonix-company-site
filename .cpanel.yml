@@ -5,23 +5,30 @@ deployment:
     - export FRONTEND_PATH=/home/anjonixg/public_html
     - export BACKEND_PATH=/home/anjonixg/backend
 
-    # 2️⃣ Build the Vite + React frontend
+    # 2️⃣ Build the Vite + React frontend (abort if it fails)
     - cd my-company-site
-    - npm install --legacy-peer-deps
-    - npm run build
+    - echo "📦 Installing dependencies..."
+    - npm install --legacy-peer-deps || { echo "❌ npm install failed. Aborting."; exit 1; }
 
-    # 3️⃣ Deploy the built frontend to public_html
-    - /bin/cp -R dist/* $FRONTEND_PATH
+    - echo "🏗️ Building Vite React app..."
+    - npm run build || { echo "❌ Vite build failed. Deployment aborted."; exit 1; }
+
+    # 3️⃣ Deploy the built frontend to public_html (only if build succeeded)
+    - echo "🚀 Copying frontend files to $FRONTEND_PATH..."
+    - /bin/cp -R dist/* $FRONTEND_PATH || { echo "❌ Failed to copy frontend files."; exit 1; }
 
     # 4️⃣ Deploy backend files to backend folder
     - cd ..
+    - echo "🔧 Deploying backend files..."
     - mkdir -p $BACKEND_PATH
-    - /bin/cp -R backend/* $BACKEND_PATH
+    - /bin/cp -R backend/* $BACKEND_PATH || { echo "❌ Failed to copy backend files."; exit 1; }
 
     # 5️⃣ (Optional) Restart your backend (if using Node.js app)
-    #    If you’re using Passenger or PM2, uncomment the relevant command below:
+    # Uncomment if using Passenger:
     # - touch $BACKEND_PATH/tmp/restart.txt
+    #
+    # Or if using PM2:
     # - pm2 restart all
 
-    # ✅ Clean log
-    - echo "🚀 Deployment completed successfully!"
+    # ✅ All done
+    - echo "✅ Deployment completed successfully at $(date)"
