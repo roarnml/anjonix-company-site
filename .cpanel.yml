@@ -23,6 +23,12 @@ deployment:
     - mkdir -p $BACKEND_PATH
     - /bin/cp -R backend/* $BACKEND_PATH || { echo "❌ Failed to copy backend files."; exit 1; }
 
+    - echo "🧾 Deployed files in frontend path ($FRONTEND_PATH):"
+    - ls -lh $FRONTEND_PATH
+
+    - echo "🧾 Deployed files in backend path ($BACKEND_PATH):"
+    - ls -lh $BACKEND_PATH
+
     # 5️⃣ (Optional) Restart your backend (if using Node.js app)
     # Uncomment if using Passenger:
     # - touch $BACKEND_PATH/tmp/restart.txt

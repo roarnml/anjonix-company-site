@@ -168,6 +168,7 @@ backend/.env
 backend/.cache/
 backend/logs/
 
+ai-fine-tuning-project/
 # --- Frontend ---
 my-company-site/node_modules/
 my-company-site/.next/

@@ -3,7 +3,7 @@ name: 🚀 Deploy to Smart Web via FTP
 on:
   push:
     branches:
-      - main   # or your main branch (could be master)
+      - main
 
 jobs:
   deploy:
@@ -11,32 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 🧭 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: 🧰 Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: 📦 Install dependencies
         working-directory: ./my-company-site
-        run: npm install
+        run: npm install --legacy-peer-deps
 
-      - name: Build project
+      - name: 🏗️ Build project
         working-directory: ./my-company-site
-        run: |
-          npm install
-          npm run build
+        run: npm run build
 
-      - name: Deploy via FTP
+      - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.anjonixgloballimited.com
-          username: deployuser@anjonixgloballimited.com
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          local-dir: ./dist/   # or ./frontend/build
+          local-dir: ./my-company-site/dist/
           server-dir: /public_html/
           passive: true
-          max-conn: 1
+          log-level: verbose
+          dangerous-clean-slate: false
