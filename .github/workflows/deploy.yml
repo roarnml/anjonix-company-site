@@ -37,6 +37,5 @@ jobs:
           port: 21
           local-dir: ./my-company-site/dist/
           server-dir: /public_html/
-          passive: true
           log-level: verbose
           dangerous-clean-slate: false
