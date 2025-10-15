@@ -27,15 +27,14 @@ jobs:
         working-directory: ./my-company-site
         run: npm run build
 
-      - name: 🚀 Deploy via FTP
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ftp.anjonixgloballimited.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
           local-dir: ./my-company-site/dist/
           server-dir: /public_html/
-          log-level: verbose
-          dangerous-clean-slate: false
+          security: loose
