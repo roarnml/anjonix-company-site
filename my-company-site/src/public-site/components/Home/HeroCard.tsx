@@ -100,12 +100,6 @@ export default function HeroCard() {
             Sign Up
           </Link>
           <Link
-            to="/demo"
-            className="bg-green-600 hover:bg-transparent border-2 border-green-600 hover:text-green-400 text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 font-semibold"
-          >
-            Schedule a Demo
-          </Link>
-          <Link
             to="/contact"
             className="bg-yellow-500 hover:bg-transparent border-2 border-yellow-500 hover:text-yellow-400 text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 font-semibold"
           >

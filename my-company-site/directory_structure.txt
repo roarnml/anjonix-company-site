@@ -322,3 +322,105 @@
                   api.ts
                   auth.ts
                   product.ts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+backend garbage
+⚙️ Backend (Express.js Example)
+
+Create a route at /api/send-mail in your Node backend (e.g., proxy-server/server.js or a new file routes/contact.js):
+
+import express from "express";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
+const router = express.Router();
+
+router.post("/send-mail", async (req, res) => {
+  const { name, email, phone, category, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com", // or your mail provider's SMTP
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER, // your email, e.g. enquiry@anjonixgloballimited.com
+        pass: process.env.SMTP_PASS, // your app password or SMTP key
+      },
+    });
+
+    const mailOptions = {
+      from: `"Anjonix Contact Form" <${process.env.SMTP_USER}>`,
+      to: "enquiry@anjonixgloballimited.com",
+      subject: `New Contact Form Message - ${category}`,
+      html: `
+        <h2>New Inquiry from ${name}</h2>
+        <p><strong>Email:</strong> ${email}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
+        <p><strong>Category:</strong> ${category}</p>
+        <hr />
+        <p>${message}</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ message: "Email sent successfully!" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Error sending email", error });
+  }
+});
+
+export default router;
+
+
+Then, in your server.js:
+
+import express from "express";
+import cors from "cors";
+import contactRouter from "./routes/contact.js";
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use("/api", contactRouter);
+
+app.listen(5000, () => console.log("Server running on port 5000"));
+
+
+And in your .env file:
+
+SMTP_USER=enquiry@anjonixgloballimited.com
+SMTP_PASS=your_email_app_password_or_smtp_key
+
+🧠 Summary
+
+✅ Frontend: Submits data via fetch("/api/send-mail")
+✅ Backend: Uses Nodemailer to email enquiry@anjonixgloballimited.com
+✅ Secure: SMTP credentials hidden in .env
+✅ Scalable: Can later hook into CRM, analytics, or reply automation

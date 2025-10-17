@@ -1,120 +1,93 @@
-//import React from "react";
+// Partners.jsx
+// A polished and professional section for displaying strategic partnerships.
+
+import HeroCardPartners from "../components/Partners/Hero";
+import PartnerAdvantageCard from "../components/Partners/PartnerAdvantageCard";
+import PartnerCards from "../components/Partners/PartnerLogo";
+import PartnerCTA from "../components/Partners/PartnersCTA";
 
 const partners = [
   {
     name: "SmartAgro Nigeria",
     category: "Agriculture & Environmental",
-    logo: "/logos/smartagro.png",
+    logo: "https://smartagrobotics.com.ng/wp-content/uploads/2024/10/SmartAgro.png",
     link: "https://smartagro.ng",
     testimonial:
-      "Partnering with Anjonix enabled us to expand precision farming access to underserved communities. Their technical support and field expertise are unmatched.",
+      "Through our partnership with Anjonix, we've expanded precision agriculture solutions to rural communities, improving efficiency and sustainability across farms nationwide.",
   },
   {
     name: "EduSync Africa",
     category: "Education & Academy",
-    logo: "/logos/edusync.png",
+    logo: "https://edusync.com/wp-content/themes/edusync/templates/parts/logos/logo.svg",
     link: "https://edusync.africa",
     testimonial:
-      "Anjonix Academy has been a catalyst for digital transformation in our partner schools. Their approach to smart learning is both innovative and practical.",
+      "Anjonix Academy has accelerated digital adoption across partner schools. Their smart learning ecosystem bridges the gap between education and innovation.",
   },
   {
     name: "TechCore Cloud",
-    category: "Technology",
-    logo: "/logos/techcore.png",
+    category: "Technology & Infrastructure",
+    logo: "https://cdn.dribbble.com/userupload/30748492/file/original-07fb025f9429368baeec9823d1b8f501.jpg?resize=752x&vertical=center",
     link: "https://techcorecloud.com",
     testimonial:
-      "With Anjonix, we jointly deliver scalable cloud and smart home solutions across Nigeria and beyond. A reliable and visionary team.",
+      "Together with Anjonix, we deliver scalable cloud infrastructure and IoT-driven home automation across Africa. Their team exemplifies technical excellence and vision.",
   },
 ];
 
 export default function Partners() {
   return (
-    <div className="px-6 py-12 max-w-7xl mx-auto">
-      {/* Page Title */}
-      <h1 className="text-4xl font-bold text-center mb-4">Our Trusted Partners</h1>
-      <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-        At Anjonix, collaboration fuels innovation. We proudly work alongside
-        industry leaders, institutions, and service providers to deliver
-        cutting-edge tech, agricultural, and educational solutions.
-      </p>
+    <div className=" w-screen mx-auto">
+    {/* Header */}
+      <HeroCardPartners />
+    {/* Partner Logos */}
+      <PartnerCards partners={partners} />
 
-      {/* Partner Logos */}
-      <section className="mb-16">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-center">
-          {partners.map((partner, index) => (
-            <a
-              key={index}
-              href={partner.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white shadow-sm hover:shadow-md transition p-4 rounded-lg flex items-center justify-center"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="h-12 object-contain grayscale hover:grayscale-0 transition"
-              />
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Testimonials */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">Success Stories</h2>
+      {/* Testimonials */}
+      <section className="mb-20">
+        <h2 className="text-2xl font-semibold mb-8 text-gray-900">
+          Partnership Success Stories
+        </h2>
         <div className="space-y-8">
           {partners.map((partner, index) => (
-            <div
+            <article
               key={index}
-              className="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm"
+              className="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition"
             >
-              <h3 className="text-xl font-bold mb-1">{partner.name}</h3>
-              <p className="text-sm text-gray-500 italic mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-1">
+                {partner.name}
+              </h3>
+              <p className="text-sm text-gray-500 mb-3 italic">
                 {partner.category}
               </p>
-              <p className="text-gray-700">{partner.testimonial}</p>
-            </div>
+              <p className="text-gray-700 leading-relaxed">{partner.testimonial}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* Why Partner with Us */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-4">Why Partner with Us?</h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
-          <li>Access to emerging markets in Africa</li>
-          <li>Collaborative innovation in tech, education, and agriculture</li>
-          <li>Brand exposure via our growing platform</li>
-          <li>Shared R&D opportunities in machine learning and IoT</li>
-        </ul>
-      </section>
+      {/* Why Partner With Us */}
+      <PartnerAdvantageCard />
 
-      {/* CTA */}
-      <section className="text-center mb-16 bg-blue-50 p-8 rounded-xl">
-        <h2 className="text-2xl font-semibold mb-2">Let’s Build the Future Together</h2>
-        <p className="text-gray-600 mb-4">
-          Interested in becoming a partner? We’d love to collaborate.
-        </p>
-        <a
-          href="partner/signup"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-        >
-          Become a Partner
-        </a>
-      </section>
+      {/* Call to Action */}
+      <PartnerCTA />
 
-      {/* Contact */}
-      <section className="text-center text-sm text-gray-500">
+      {/* Contact Info */}
+      <footer className="text-center text-sm text-gray-500">
         <p>
-          Need help? Contact our partnership team at{" "}
-          <a href="mailto:partnersupport@anjonix.com" className="underline">
+          Questions? Reach our partnership team at{" "}
+          <a
+            href="mailto:enquiry@anjonixgloballimited.com"
+            className="underline hover:text-blue-700"
+          >
             enquiry@anjonixgloballimited.com
           </a>
         </p>
-        <p>
-          Or call us at: <strong>+234-901-995-4473, +234-907-902-8605</strong>
+        <p className="mt-1">
+          Or call us at:{" "}
+          <strong className="text-gray-700">
+            +234-901-995-4473 / +234-907-902-8605
+          </strong>
         </p>
-      </section>
+      </footer>
     </div>
   );
 }

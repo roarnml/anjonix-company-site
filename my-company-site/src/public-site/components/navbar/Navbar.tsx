@@ -62,7 +62,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
                         <a
                           href={item.url}
                           rel="noopener noreferrer"
-                          className="block text-gray-600 hover:text-blue-600 text-sm"
+                          className="block text-gray-600 hover:underline hover:text-white text-sm"
                         >
                           {item.label} ↗
                         </a>
@@ -73,7 +73,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
                     <li key={item.label}>
                       <Link
                         to={item.path || "#"}
-                        className="block text-gray-600 hover:text-blue-600 text-sm"
+                        className="block text-gray-600 hover:underline hover:text-white text-sm"
                       >
                         {item.label}
                       </Link>
@@ -101,7 +101,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
           className={`px-4 py-2 rounded-md text-sm font-medium transition text-white ${
             dropdownOpen === link.name
               ? "text-blue-600 border-b-2 border-blue-600"
-              : "hover:text-blue-600"
+              : "hover:underline hover:text-white"
           }`}
         >
           {link.name}
@@ -118,7 +118,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
         <Link
           key={link.name}
           to={link.path}
-          className={`px-4 py-2 rounded-md text-sm font-medium text-white hover:text-blue-600 ${
+          className={`px-4 py-2 rounded-md text-sm font-medium text-white hover:underline hover:text-white ${
             location.pathname === link.path ? "text-blue-600 font-bold" : ""
           }`}
         >
@@ -198,7 +198,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
                   <a
                     href={item.url}
                     rel="noopener noreferrer"
-                    className="block text-black hover:text-blue-600 text-sm"
+                    className="block text-black hover:underline hover:text-white text-sm"
                   >
                     {item.label} ↗
                   </a>
@@ -212,7 +212,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
               <li key={item.label}>
                 <Link
                   to={item.path || "#"}
-                  className="block text-black hover:text-blue-600 text-sm"
+                  className="block text-black hover:underline hover:text-white text-sm"
                 >
                   {item.label}
                 </Link>
@@ -227,7 +227,7 @@ export default function Navbar({ variant = "public-site" }: NavbarProps) {
 
   // ---------- RENDER ----------
   return (
-    <nav className="bg-gradient-to-br from-slate-500 to-slate-800 shadow-md sticky top-0 z-50 w-full text-white">
+    <nav className="bg-gradient-to-br bg-blue-600  shadow-md sticky top-0 z-50 w-full text-white">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">

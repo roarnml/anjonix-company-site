@@ -1,53 +1,126 @@
+// Careers.jsx
+// Modern, card-based layout for the Anjonix Careers page.
+
+import HeroCardCareers from "../components/Careers/Hero";
+import WhyWorkCardDiv from "../components/Careers/WhyWorkCard";
+//import WhyWorkCard from "../components/Careers/WhyWorkCard";
 
 export default function Careers() {
+  const benefits = [
+    {
+      title: "Purpose-Driven Work",
+      subtitle: "Impact That Matters",
+      description:
+        "Every project you work on directly contributes to Africa's digital, educational, and agricultural transformation.",
+    },
+    {
+      title: "Collaborative Culture",
+      subtitle: "Teamwork First",
+      description:
+        "Work alongside talented professionals across multiple domains in a supportive, innovation-driven environment.",
+    },
+    {
+      title: "Growth & Learning",
+      subtitle: "Level Up Skills",
+      description:
+        "Develop expertise across AI, IoT, cybersecurity, edtech, and agritech through mentorship, training, and hands-on experience.",
+    },
+    {
+      title: "Diverse Challenges",
+      subtitle: "Stretch & Innovate",
+      description:
+        "Engage in complex, high-impact problems that push your creativity and technical skills to the next level.",
+    },
+    {
+      title: "Startup Energy",
+      subtitle: "Agility + Scale",
+      description:
+        "Experience the excitement of a startup with the vision and stability of a scaling enterprise.",
+    },
+  ];
+
+
+  const tracks = [
+    {
+      title: "Tech & Engineering",
+      roles: "Full Stack Devs, AI/ML Engineers, IoT Specialists, Cybersecurity Experts",
+    },
+    {
+      title: "Agriculture",
+      roles: "Agronomists, Field Engineers, Data Analysts",
+    },
+    {
+      title: "Education",
+      roles: "Trainers, Curriculum Designers, Technicians",
+    },
+    {
+      title: "Business & Operations",
+      roles: "Project Managers, Client Success Managers, Marketing Leads",
+    },
+  ];
+
   return (
-  <div className="px-6 py-12 max-w-5xl mx-auto">
-    <h1 className="text-4xl font-bold text-center mb-6">Build the Future With Us</h1>
-    <p className="text-center text-gray-600 mb-10">
-      Anjonix is more than a company — it's a mission. A mission to empower, transform, and elevate lives using intelligent technology, sustainable agriculture, and smart education systems.
-    </p>
+    <div className="w-screen mx-auto bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      {/* Hero Section */}
+        <HeroCardCareers />
+      {/* Why Work Here Card */}
+      <WhyWorkCardDiv benefits={benefits} />
 
-    <section className="mb-10">
-      <h2 className="text-2xl font-semibold mb-3">Why Work at Anjonix?</h2>
-      <ul className="list-disc list-inside space-y-2 text-gray-700">
-        <li>🌍 Purpose-Driven Work</li>
-        <li>🤝 Collaborative Culture</li>
-        <li>📈 Growth & Learning across AI, cybersecurity, IoT, edtech, agritech</li>
-        <li>🧠 Diverse Challenges with real impact</li>
-        <li>🌱 Startup Energy + Scalable Vision</li>
-      </ul>
-    </section>
+      {/* Career Tracks Card */}
+      <section className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 mb-12">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-900">
+          Career Tracks & Roles
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {tracks.map((track, index) => (
+            <article
+              key={index}
+              className="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:shadow-md transition"
+            >
+              <h3 className="text-lg font-bold text-blue-800 mb-2">
+                {track.title}
+              </h3>
+              <p className="text-gray-700">{track.roles}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-    <section className="mb-10">
-      <h2 className="text-2xl font-semibold mb-3">Career Tracks & Roles</h2>
-      <ul className="list-disc list-inside space-y-2 text-gray-700">
-        <li><strong>Tech & Engineering:</strong> Full Stack Devs, AI/ML, IoT, Cybersecurity</li>
-        <li><strong>Agriculture:</strong> Agronomists, Field Engineers, Analysts</li>
-        <li><strong>Education:</strong> Trainers, Curriculum Designers, Technicians</li>
-        <li><strong>Business & Ops:</strong> PMs, Client Success, Marketing Leads</li>
-      </ul>
-    </section>
+      {/* Internship & Entry-Level Card */}
+      <section className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 mb-12 text-gray-700">
+        <h2 className="text-2xl font-semibold mb-3">Internships & Entry-Level</h2>
+        <p>
+          We nurture the next generation of innovators through bootcamps, internships,
+          and campus ambassador programs. Whether you’re coding your first project or
+          leading one, there’s space for you here.
+        </p>
+      </section>
 
-    <section className="mb-10">
-      <h2 className="text-2xl font-semibold mb-3">Internships & Entry-Level</h2>
-      <p className="text-gray-700 mb-2">
-        We invest in the next generation with bootcamps, internships, and campus programs.
-      </p>
-    </section>
+      {/* How to Apply Card */}
+      <section className="bg-gradient-to-r from-blue-700 to-indigo-700 text-white p-10 rounded-2xl shadow-xl text-center mb-16">
+        <h2 className="text-2xl font-semibold mb-3">Ready to Join the Revolution?</h2>
+        <p className="mb-4 max-w-2xl mx-auto text-blue-100">
+          Take your career to the next level — we’re looking for thinkers, builders,
+          dreamers, and doers who want to shape Africa’s technological horizon.
+        </p>
+        <div className="bg-white text-blue-800 px-6 py-3 inline-block rounded-lg font-medium shadow-md">
+          <a
+            href="mailto:careers@anjonixgloballimited.com"
+            className="bg-white text-blue-800 px-6 py-3 inline-block rounded-lg font-medium shadow-md hover:bg-blue-50 transition"
+          >
+            📩 careers@anjonixgloballimited.com
+          </a>
 
-    <section className="mb-10">
-      <h2 className="text-2xl font-semibold mb-3">How to Apply</h2>
-      <p className="text-gray-700">
-        🚀 Ready to take your career to the next level? Submit your resume and a short personal statement to:
-        <br />
-        📩 <strong>careers@anjonix.com</strong>
-        <br />
-        📄 Attach your portfolio (if applicable)
-      </p>
-    </section>
+        </div>
+        <p className="text-sm text-blue-200 mt-3">
+          Include your resume and portfolio (if applicable).
+        </p>
+      </section>
 
-    <p className="text-center text-blue-600 font-medium">
-      Explore open roles and help us reshape Africa's future.
-    </p>
-  </div>
-)};
+      {/* Closing Note */}
+      <footer className="text-center text-sm text-gray-500">
+        Explore open roles and help us reshape Africa’s future — one innovation at a time.
+      </footer>
+    </div>
+  );
+}

@@ -64,14 +64,13 @@ export default function WhyChooseAnjonix() {
           </motion.div>
         ))}
       </div>
-
       {/* CTA */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 1 }}
         viewport={{ once: true }}
-        className="mt-14 flex justify-center"
+        className="mt-14 flex justify-center relative z-10" // Added relative z-10
       >
         <Link
           to="/about"
@@ -82,8 +81,8 @@ export default function WhyChooseAnjonix() {
       </motion.div>
 
       {/* Ambient Glow Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
-      <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-500" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse z-0" />
+      <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-500 z-0" />
     </section>
   )
 }

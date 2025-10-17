@@ -4,6 +4,7 @@ import Home from './public-site/pages/Home'
 import Partners from './public-site/pages/Partners'
 import Careers from './public-site/pages/Careers'
 import About from './public-site/pages/About'
+import Logins from './public-site/pages/Auth/Login'
 import TechApp from './apps/tech/TechApp'
 import AgricApp from './apps/agric/AgricApp'
 import EduApp from './apps/edu/EduApp'
@@ -20,12 +21,20 @@ import DashboardLayout from './apps/tech/components/Layouts/Layout'
 import LearnerDashboard from './apps/tech/pages/learner/Dashboard'
 import InstructorDashboard from './apps/tech/pages/instructor/Dashboard'
 import OrgDashboard from './apps/tech/pages/org/Dashboard'
+import Contact from './public-site/pages/Contact'
+import Register from './public-site/pages/Auth/Register'
+import { AuthProvider } from "./context/AuthContext";
+import InnovationHub from './public-site/pages/InnovationHub'
+import PartnerSignup from './public-site/pages/Auth/PartnerRegister'
+import CareerOpenings from './public-site/pages/CareerOpening'
+
 
 
 const VerifyEmail = lazy(() => import("./apps/tech/auths/VerifyEmail"));  
 
 export default function App() {
   return (
+ <AuthProvider>
     <Routes>
       {/* Public Website */}
       <Route path="/" element={<PublicLayout  />} >
@@ -34,6 +43,13 @@ export default function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/about" element={<About />} />
         <Route path="/verify" element={<VerifyEmail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Logins />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/partner/signup" element={<PartnerSignup />} />
+        <Route path="/innovation-hub" element={<InnovationHub />} />
+        <Route path="/open-roles" element={<CareerOpenings />} />
+        {/* You can add protected routes here later */}
       </Route>
 
       {/* Separate Sub-Apps */}
@@ -92,5 +108,6 @@ export default function App() {
       </Route>
 
     </Routes>
+  </AuthProvider>
   )
 }
